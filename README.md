@@ -27,16 +27,18 @@ Drop in a square-cropped photo (600×600 or larger) and point the `src` at it:
 
 It renders at 64px on mobile and 76px on desktop, cropped to a circle via `object-fit: cover`.
 
-**2. Set the live URL.** `index.html` contains five instances of `REPLACE-ME.netlify.app`
-in the Open Graph / canonical tags. Until they point at the real domain, sharing the link
-on LinkedIn or Slack will produce a preview with no image. Find and replace all five:
+**2. The live URL is set to `https://dawitsileshi.netlify.app`.** If you deploy under a
+different name or add a custom domain, update all four tags in `<head>` — `canonical`,
+`og:url`, `og:image` and `twitter:image`:
 
 ```bash
-grep -c REPLACE-ME index.html   # expect 5, then 0 once fixed
+grep -n 'dawitsileshi\.netlify\.app' index.html   # 4 lines
 ```
 
-`og:image` in particular must be an **absolute** URL — relative paths are ignored by most
-link scrapers.
+`og:image` must stay an **absolute** URL; relative paths are ignored by most link scrapers.
+After changing it, re-scrape with the
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) — LinkedIn caches
+previews aggressively and will otherwise keep serving the old one.
 
 ## Deploying to Netlify
 
@@ -45,13 +47,19 @@ The site is plain static files, so either route works.
 **Drag and drop** — go to <https://app.netlify.com/drop> and drop this folder in. Fastest
 way to get a URL, but you re-upload by hand on every change.
 
-**Connected to git** (recommended) — push this repo to GitHub, then in Netlify:
-*Add new site → Import an existing project*, pick the repo, and accept the defaults.
-`netlify.toml` already sets publish directory to the repo root and no build command.
-Every push then deploys automatically.
+**Connected to git** (recommended, and how this is set up) — push to GitHub, then in
+Netlify: *Add new site → Import an existing project*, pick the repo, accept the defaults.
+`netlify.toml` already sets the publish directory to the repo root with no build command.
+Every push to `main` then deploys automatically. Only tracked files are published, so
+anything in `.gitignore` never reaches the site.
 
-Either way, set the site name (or a custom domain) first, then do the `REPLACE-ME` swap
-above so the social card resolves.
+```bash
+git remote add origin https://github.com/dawitsileshi/<repo>.git
+git push -u origin main
+```
+
+Then set the site name under *Site configuration → Change site name* so the domain matches
+the social tags above.
 
 ## Design notes
 
