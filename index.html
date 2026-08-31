@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dawit Sileshi — Full-stack engineer</title>
+<meta name="description" content="Dawit Sileshi, full-stack engineer in Addis Ababa. I build web systems, internal tools, and data platforms.">
+<meta name="theme-color" content="#0c0e11">
+
+<!-- ===================================================================
+     SET YOUR LIVE URL BEFORE SHARING THE LINK.
+     Replace every REPLACE-ME.netlify.app below with the real domain.
+     og:image must be an absolute URL or link previews will show no image.
+     =================================================================== -->
+<link rel="canonical" href="https://REPLACE-ME.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dawit Sileshi">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://REPLACE-ME.netlify.app/">
+<meta property="og:title" content="Dawit Sileshi — Full-stack engineer">
+<meta property="og:description" content="I build web systems, internal tools, and data platforms. Open to full-time roles and project work.">
+<meta property="og:image" content="https://REPLACE-ME.netlify.app/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dawit Sileshi — full-stack engineer, Addis Ababa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dawit Sileshi — Full-stack engineer">
+<meta name="twitter:description" content="I build web systems, internal tools, and data platforms. Open to full-time roles and project work.">
+<meta name="twitter:image" content="https://REPLACE-ME.netlify.app/images/og-image.png">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Set the theme before first paint so there is no flash. */
+(function () {
+  var t = "dark";
+  try {
+    t = localStorage.getItem("theme")
+      || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  } catch (e) {}
+  document.documentElement.setAttribute("data-theme", t);
+  document.documentElement.className = "js";
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="page">
+
+  <div class="topbar">
+    <span class="wordmark">DS</span>
+    <button class="theme-toggle" id="theme-toggle" type="button">
+      <span class="theme-swatch" aria-hidden="true"></span>
+      <span id="theme-name">Dark</span>
+    </button>
+  </div>
+
+  <header class="masthead">
+    <div class="identity">
+      <!-- Replace images/portrait.svg with your own photo, square crop. -->
+      <img class="portrait" src="images/portrait.svg" alt="Dawit Sileshi" width="200" height="200" decoding="async">
+      <div class="identity-text">
+        <h1>Dawit Sileshi</h1>
+        <p class="role">Full-stack engineer, Addis Ababa</p>
+      </div>
+    </div>
+    <p class="intro">I build web systems, internal tools, and data platforms. Open to full-time roles and project work.</p>
+  </header>
+
+  <main id="main">
+
+    <section class="section" aria-labelledby="projects-heading">
+      <h2 class="section-heading" id="projects-heading">Projects</h2>
+
+      <ol class="projects">
+
+        <li class="project reveal">
+          <span class="project-index">01</span>
+          <div class="project-main">
+            <h3 class="project-title">Danakil Hotel RMS</h3>
+            <p class="project-body">Production hotel and F&amp;B management system: reservations, point of sale, retail, inventory, reporting. In daily use at Danakil Hotel. Local-first architecture over the hotel LAN with an online replica for remote access and sync.</p>
+            <ul class="shots">
+              <li><img src="screenshots/01-room-dashboard.jpg" alt="Danakil Hotel RMS: room dashboard screen" width="1400" height="805" loading="lazy" decoding="async"></li>
+              <li><img src="screenshots/02-inventory-and-transfers.jpg" alt="Danakil Hotel RMS: inventory and transfers screen" width="1400" height="805" loading="lazy" decoding="async"></li>
+              <li><img src="screenshots/03-revenue-analytics.jpg" alt="Danakil Hotel RMS: revenue analytics screen" width="1400" height="805" loading="lazy" decoding="async"></li>
+            </ul>
+          </div>
+          <div class="project-rail">
+            <p class="project-stack">Node.js, React, PostgreSQL, Docker, Linux</p>
+            <p class="project-meta">No live link</p>
+          </div>
+        </li>
+
+        <li class="project reveal">
+          <span class="project-index">02</span>
+          <div class="project-main">
+            <h3 class="project-title">Warka</h3>
+            <p class="project-body">Building a platform for planning and managing off-grid solar systems in Ethiopia. Pre-pilot.</p>
+            <ul class="shots shots-pair">
+              <li><img src="screenshots/warka-1.jpg" alt="Warka: fleet and stock overview" width="1000" height="625" loading="lazy" decoding="async"></li>
+              <li><img src="screenshots/warka-2.jpg" alt="Warka: live payment-to-power demo" width="1000" height="625" loading="lazy" decoding="async"></li>
+            </ul>
+          </div>
+          <div class="project-rail">
+            <p class="project-stack">Node.js, React, PostgreSQL, Docker</p>
+            <p class="project-meta"><a href="https://warka-paygo-qf8j.onrender.com/" rel="noopener">warka-paygo-qf8j.onrender.com</a></p>
+          </div>
+        </li>
+
+        <li class="project reveal">
+          <span class="project-index">03</span>
+          <div class="project-main">
+            <h3 class="project-title">Sile Enat</h3>
+            <p class="project-body">Digital health project supporting mothers experiencing postpartum depression: a private space for symptom tracking and support. 2nd place, ALX Ethiopia &amp; Kuriftu Wellness Hackathon.</p>
+            <ul class="shots shots-pair">
+              <li><img src="screenshots/sileenat-1.jpg" alt="Sile Enat: home page" width="1000" height="625" loading="lazy" decoding="async"></li>
+              <li><img src="screenshots/sileenat-2.jpg" alt="Sile Enat: support features" width="960" height="600" loading="lazy" decoding="async"></li>
+            </ul>
+          </div>
+          <div class="project-rail">
+            <p class="project-stack">React, Node.js, PostgreSQL, with AI-assisted check-ins</p>
+            <p class="project-meta"><a href="https://sileinat.org/" rel="noopener">sileinat.org</a></p>
+          </div>
+        </li>
+
+        <li class="project reveal">
+          <span class="project-index">04</span>
+          <div class="project-main">
+            <h3 class="project-title">Haile &amp; Partners Legal</h3>
+            <p class="project-body">Spec project: demonstration site for a fictional Ethiopian law firm.</p>
+            <ul class="shots shots-pair">
+              <li><img src="screenshots/haile-1.jpg" alt="Haile &amp; Partners Legal: home page" width="1000" height="625" loading="lazy" decoding="async"></li>
+              <li><img src="screenshots/haile-2.jpg" alt="Haile &amp; Partners Legal: practice areas" width="1000" height="625" loading="lazy" decoding="async"></li>
+            </ul>
+          </div>
+          <div class="project-rail">
+            <p class="project-stack">Vanilla HTML, CSS, JS</p>
+            <p class="project-meta"><a href="https://lawfirmprototype.netlify.app/" rel="noopener">lawfirmprototype.netlify.app</a></p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <section class="section reveal" aria-labelledby="contact-heading">
+      <h2 class="section-heading" id="contact-heading">Contact</h2>
+      <address class="contact">
+        <p><span class="contact-label">Email</span> <a href="mailto:dawitsileshi45@gmail.com">dawitsileshi45@gmail.com</a></p>
+        <p><span class="contact-label">Phone</span> <a href="tel:+251932151071">+251 932 151 071</a></p>
+        <p><span class="contact-label">LinkedIn</span> <a href="https://www.linkedin.com/in/dawit-sileshi/" rel="noopener">linkedin.com/in/dawit-sileshi</a></p>
+        <p><span class="contact-label">GitHub</span> <a href="https://github.com/dawitsileshi" rel="noopener">github.com/dawitsileshi</a></p>
+      </address>
+    </section>
+
+  </main>
+
+  <footer class="colophon">
+    <p>Dawit Sileshi</p>
+  </footer>
+
+</div>
+
+<script>
+/* Theme toggle + fade-in on scroll. Inline so it always ships with the page. */
+(function () {
+  "use strict";
+
+  /* ---- theme ---- */
+  var root = document.documentElement;
+  var btn = document.getElementById("theme-toggle");
+  var nameEl = document.getElementById("theme-name");
+  var meta = document.querySelector('meta[name="theme-color"]');
+
+  function paint(theme) {
+    root.setAttribute("data-theme", theme);
+    nameEl.textContent = theme === "dark" ? "Dark" : "Light";
+    btn.setAttribute("aria-label",
+      "Switch to " + (theme === "dark" ? "light" : "dark") + " theme");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#0c0e11" : "#f7f6f4");
+  }
+
+  paint(root.getAttribute("data-theme") || "dark");
+
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    paint(next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  /* ---- reveal ---- */
+  var items = [].slice.call(document.querySelectorAll(".reveal"));
+  if (!items.length) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+    return;
+  }
+
+  var ticking = false;
+
+  function check() {
+    ticking = false;
+    var limit = window.innerHeight * 0.92;
+    for (var i = items.length - 1; i >= 0; i--) {
+      if (items[i].getBoundingClientRect().top < limit) {
+        items[i].classList.add("is-visible");
+        items.splice(i, 1);
+      }
+    }
+    if (!items.length) {
+      window.removeEventListener("scroll", request);
+      window.removeEventListener("resize", request);
+    }
+  }
+
+  function request() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(check);
+  }
+
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  check();
+})();
+</script>
+</body>
+</html>

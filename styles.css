@@ -1,0 +1,390 @@
+/* Dawit Sileshi — personal portfolio
+   Dark by default, light on toggle. No build step. */
+
+:root {
+  --serif: "Space Grotesk", "Segoe UI", Helvetica, Arial, sans-serif;
+  --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --shell: 1080px;
+  --gutter: 1.5rem;
+  --radius: 4px;
+}
+
+[data-theme="dark"] {
+  --bg:           #0c0e11;
+  --surface:      #14171c;
+  --surface-2:    #1a1e24;
+  --border:       #262c35;
+  --border-hi:    #39424f;
+  --text:         #e9ecf1;
+  --text-dim:     #a2abb8;
+  --text-faint:   #7b8492;
+  --accent:       #f2a55a;
+  --accent-hi:    #ffc189;
+  --accent-soft:  rgba(242, 165, 90, 0.13);
+  --shadow:       0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] {
+  --bg:           #f7f6f4;
+  --surface:      #ffffff;
+  --surface-2:    #f1efec;
+  --border:       #dedad3;
+  --border-hi:    #bdb7ad;
+  --text:         #14161a;
+  --text-dim:     #4d545e;
+  --text-faint:   #656c77;
+  --accent:       #b45309;
+  --accent-hi:    #8f4107;
+  --accent-soft:  rgba(180, 83, 9, 0.09);
+  --shadow:       0 1px 2px rgba(20, 22, 26, 0.06), 0 12px 28px rgba(20, 22, 26, 0.07);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.page {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter) 3rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-hi);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+}
+.skip-link:focus { left: var(--gutter); top: 0.75rem; z-index: 20; }
+
+/* ---------- topbar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+}
+
+.wordmark {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--border-hi); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---------- masthead ---------- */
+
+.masthead { padding-bottom: 1rem; }
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.portrait {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-hi);
+  background: var(--surface-2);
+}
+
+.masthead h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.role {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin: 0.5rem 0 0;
+}
+
+.intro {
+  margin: 1.75rem 0 0;
+  max-width: 34em;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-heading {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 2.5rem;
+}
+
+/* ---------- projects ---------- */
+
+.projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: none;
+}
+
+.project {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 1.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.project:last-child { margin-bottom: 0; }
+.project:hover {
+  border-color: var(--border-hi);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.project-index {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+}
+
+.project-rail { margin-top: 1.5rem; }
+
+.project-stack,
+.project-meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--text-faint);
+  margin: 0;
+}
+.project-meta { margin-top: 0.6rem; }
+
+.project-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+}
+
+.project-body {
+  margin: 0;
+  max-width: 46em;
+  color: var(--text-dim);
+}
+
+/* ---------- screenshots ---------- */
+
+.shots {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+.shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+/* ---------- contact ---------- */
+
+.contact { font-style: normal; }
+
+/* Stacked while narrow so a long URL never wraps out of line with the
+   shorter rows; two columns once there is room. */
+.contact p { margin: 0 0 1.1rem; }
+.contact p:last-child { margin-bottom: 0; }
+
+.contact-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--text-faint);
+}
+
+.contact a { overflow-wrap: anywhere; }
+
+/* ---------- links ---------- */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-soft);
+  transition: color 140ms ease, border-color 140ms ease;
+}
+a:hover { color: var(--accent-hi); border-bottom-color: currentColor; }
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+  border-bottom-color: transparent;
+}
+
+/* ---------- colophon ---------- */
+
+.colophon {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.colophon p {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+/* ---------- reveal on scroll ---------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 550ms ease, transform 550ms ease;
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- wider viewports ---------- */
+
+@media (min-width: 40em) {
+  :root { --gutter: 2rem; }
+
+  .page { padding-top: 2rem; }
+  .portrait { width: 76px; height: 76px; }
+  .project { padding: 2rem 2rem 2.25rem; }
+  .shots { grid-template-columns: 1fr 1fr; }
+  /* Danakil leads with a full-width shot; two-up galleries stay side by side. */
+  .shots li:first-child { grid-column: 1 / -1; }
+  .shots-pair li:first-child { grid-column: auto; }
+
+  .contact p {
+    margin-bottom: 0.7rem;
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    align-items: baseline;
+    column-gap: 1rem;
+  }
+  .contact-label { line-height: inherit; }
+  /* keep the underline on the text, not the whole grid column */
+  .contact a { justify-self: start; }
+}
+
+@media (min-width: 60em) {
+  .page { padding-top: 2.5rem; padding-bottom: 5rem; }
+
+  .project {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    column-gap: 3rem;
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  /* Source order is index, content, rail (mobile reading order);
+     placement puts the rail back into the left column here. */
+  .project-index { grid-column: 1; grid-row: 1; }
+  .project-rail  { grid-column: 1; grid-row: 2; margin-top: 0; }
+  .project-main  { grid-column: 2; grid-row: 1 / span 2; }
+  .section-heading { margin-bottom: 3rem; }
+}
+
+/* ---------- preferences ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+  .project:hover { transform: none; }
+}
+
+@media print {
+  .skip-link, .topbar, .shots { display: none; }
+  body { background: #fff; color: #000; }
+  .project { border-color: #ccc; box-shadow: none; }
+  a { color: #000; border-bottom: 0; }
+}

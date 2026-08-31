@@ -1,0 +1,14 @@
+# Editor / workspace state
+.nimbalyst/
+.vscode/
+.idea/
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Local scratch
+*.log
+_t.html
+_mobile-test.html
