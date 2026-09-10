@@ -15,14 +15,17 @@ netlify.toml    Deploy config (publish root, cache + security headers)
 
 ## The portrait
 
-`images/portrait.jpg` is a 4:5 crop at 600×750, rendered at 132px wide on mobile and
-190px on desktop. It sits below the name while narrow and moves into a right-hand column
-at 60em.
+`images/portrait.jpg` is a square crop at 640×640, shown as a circle with a white ring —
+132px across on mobile, 190px on desktop. It sits below the name while narrow and moves
+into a right-hand column at 60em.
 
-To swap it, crop to **4:5** and export around 600px wide — that covers 2× displays at the
-size it is shown. If you use a different aspect ratio, either update the `aspect-ratio` in
-`.portrait` or let `object-fit: cover` crop it, steering the framing with `object-position`
-(currently `50% 12%`, which favours the top of the frame where a head usually sits).
+To swap it, crop **square** and framed for a circle: head roughly centred with a little
+headroom, cropping around the upper chest. Export about 640px, which covers 2× displays at
+the size it is shown. Anything not square will be centre-cropped by `object-fit: cover`,
+which usually cuts a portrait badly — crop it yourself rather than relying on that.
+
+The white ring is near-invisible against the off-white light theme, so
+`[data-theme="light"] .portrait` adds a hairline `box-shadow` to keep the disc defined.
 
 The full-resolution camera export is git-ignored — see `images/YOAB*.jpg` in `.gitignore`.
 It is 3.8 MB and the site never serves it, so it is kept out of the repo deliberately.
