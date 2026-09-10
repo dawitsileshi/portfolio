@@ -13,21 +13,23 @@ screenshots/    Project screenshots
 netlify.toml    Deploy config (publish root, cache + security headers)
 ```
 
+## The portrait
+
+`images/portrait.jpg` is a 4:5 crop at 600×750, rendered at 132px wide on mobile and
+190px on desktop. It sits below the name while narrow and moves into a right-hand column
+at 60em.
+
+To swap it, crop to **4:5** and export around 600px wide — that covers 2× displays at the
+size it is shown. If you use a different aspect ratio, either update the `aspect-ratio` in
+`.portrait` or let `object-fit: cover` crop it, steering the framing with `object-position`
+(currently `50% 12%`, which favours the top of the frame where a head usually sits).
+
+The full-resolution camera export is git-ignored — see `images/YOAB*.jpg` in `.gitignore`.
+It is 3.8 MB and the site never serves it, so it is kept out of the repo deliberately.
+
 ## Before you share the link
 
-Two things still need your input.
-
-**1. Replace the portrait.** `images/portrait.svg` is a placeholder glyph, not a photo.
-Drop in a square-cropped photo (600×600 or larger) and point the `src` at it:
-
-```html
-<!-- in index.html, in the .identity block -->
-<img class="portrait" src="images/portrait.jpg" alt="Dawit Sileshi" width="600" height="600" decoding="async">
-```
-
-It renders at 64px on mobile and 76px on desktop, cropped to a circle via `object-fit: cover`.
-
-**2. The live URL is set to `https://dawitsileshi.netlify.app`.** If you deploy under a
+**The live URL is set to `https://dawitsileshi.netlify.app`.** If you deploy under a
 different name or add a custom domain, update all four tags in `<head>` — `canonical`,
 `og:url`, `og:image` and `twitter:image`:
 

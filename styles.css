@@ -123,21 +123,23 @@ body {
 
 /* ---------- masthead ---------- */
 
-.masthead { padding-bottom: 1rem; }
-
-.identity {
-  display: flex;
-  align-items: center;
-  gap: 1.15rem;
+.masthead {
+  display: grid;
+  gap: 1.75rem;
+  padding-bottom: 1rem;
 }
 
+/* A half-body portrait does not survive a circular crop at this size, so it
+   sits in a panel that matches the project cards instead. */
 .portrait {
-  width: 64px;
-  height: 64px;
-  flex: 0 0 auto;
-  border-radius: 50%;
+  display: block;
+  width: 132px;
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-  border: 1px solid var(--border-hi);
+  object-position: 50% 12%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   background: var(--surface-2);
 }
 
@@ -159,8 +161,8 @@ body {
 }
 
 .intro {
-  margin: 1.75rem 0 0;
-  max-width: 34em;
+  margin: 1.5rem 0 0;
+  max-width: 32em;
   font-size: 1.125rem;
   line-height: 1.6;
   color: var(--text-dim);
@@ -340,7 +342,7 @@ a:focus-visible {
   :root { --gutter: 2rem; }
 
   .page { padding-top: 2rem; }
-  .portrait { width: 76px; height: 76px; }
+  .portrait { width: 152px; }
   .project { padding: 2rem 2rem 2.25rem; }
   .shots { grid-template-columns: 1fr 1fr; }
   /* Danakil leads with a full-width shot; two-up galleries stay side by side. */
@@ -361,6 +363,14 @@ a:focus-visible {
 
 @media (min-width: 60em) {
   .page { padding-top: 2.5rem; padding-bottom: 5rem; }
+
+  .masthead {
+    grid-template-columns: 1fr auto;
+    column-gap: 3.5rem;
+    align-items: start;
+  }
+  .masthead-text { grid-column: 1; grid-row: 1; }
+  .portrait { grid-column: 2; grid-row: 1; width: 190px; }
 
   .project {
     display: grid;

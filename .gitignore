@@ -12,3 +12,8 @@ desktop.ini
 *.log
 _t.html
 _mobile-test.html
+
+# Original camera export for the portrait (3.8 MB). images/portrait.jpg is the
+# cropped, web-sized version that the site actually uses; keeping the original
+# out of git avoids permanently bloating the repo.
+images/YOAB*.jpg
