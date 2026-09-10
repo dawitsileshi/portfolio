@@ -17,18 +17,22 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Fingerprint-free assets, but they change rarely; a day is a safe middle ground.
+# Filenames are not fingerprinted, so a long max-age strands returning
+# visitors on stale CSS and images for a day after every deploy — Netlify
+# purges its CDN on deploy, but browser caches keep serving the old copy.
+# Revalidate instead: Netlify sends strong ETags, so unchanged files cost a
+# 304 rather than a re-download.
 [[headers]]
   for = "/screenshots/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/styles.css"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=0, must-revalidate"
