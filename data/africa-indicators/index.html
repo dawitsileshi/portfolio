@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Africa Digital Finance Indicators · Dawit Sileshi</title>
+<meta name="description" content="Nine digital finance indicators for 35 African countries, Global Findex 2025.">
+<meta property="og:title" content="Africa Digital Finance Indicators">
+<meta property="og:description" content="Nine digital finance indicators for 35 African countries, Global Findex 2025.">
+</head>
+<body>
+<nav style="max-width:980px;margin:0 auto 18px;font:13px 'IBM Plex Sans',system-ui,sans-serif"><a href="../" style="color:inherit;opacity:.7">← Data &amp; visual work</a></nav>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: scorecard summary first, then one ranked chart driven by an indicator picker, then the indicator dictionary */
+:root{
+  --bg:#FAFAF9; --panel:#F0F1F3; --ink:#1B1F24; --ink2:#3A414B; --muted:#5D6570; --rule:#E0E3E7;
+  --eth:#C2410C; --cmp:#2F64B0; --bar:#B9C0C9; --track:#E9ECEF;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --panel:#1D2126; --ink:#ECEEF1; --ink2:#C6CBD2; --muted:#98A0AB; --rule:#2D3239;
+  --eth:#F07A42; --cmp:#6E9BDB; --bar:#525A65; --track:#262B31; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --panel:#1D2126; --ink:#ECEEF1; --ink2:#C6CBD2; --muted:#98A0AB; --rule:#2D3239;
+  --eth:#F07A42; --cmp:#6E9BDB; --bar:#525A65; --track:#262B31; color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding-inline:20px;padding-block:28px 56px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--eth);font-weight:700}
+h1{font-size:clamp(26px,4.4vw,36px);line-height:1.15;font-weight:700;text-wrap:balance;margin-top:6px;max-width:26ch}
+.lede{font-size:17px;color:var(--ink2);max-width:64ch;margin-top:10px}
+.meta{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:8px 0;margin-top:14px;display:flex;flex-wrap:wrap;gap:4px 20px;justify-content:space-between}
+h2{font-size:20px;line-height:1.25;text-wrap:balance}
+.sub{font-size:13px;color:var(--muted);margin-top:3px}
+.num{font-variant-numeric:tabular-nums}
+
+/* headline */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.stat{border-top:3px solid var(--ink);padding-top:10px;min-width:0}
+.stat.eth{border-color:var(--eth)}
+.stat b{display:block;font-size:40px;line-height:1;font-weight:700}
+.stat.eth b{color:var(--eth)}
+.stat span{display:block;font-size:14px;color:var(--ink2);margin-top:6px}
+
+/* scorecard */
+.score{border-top:1px solid var(--rule)}
+.srow{display:grid;grid-template-columns:minmax(0,1.6fr) 64px 64px 70px minmax(120px,2fr);gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--rule)}
+.srow.head{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 0}
+.srow .lab{font-size:14px;min-width:0}
+.srow .lab small{display:block;color:var(--muted);font-size:12px}
+.srow .v{text-align:right;font-weight:600}
+.srow .r{text-align:right;color:var(--muted);font-size:13px}
+.srow .rank{text-align:right;font-size:13px}
+.strip{position:relative;height:18px}
+.strip .ln{position:absolute;left:0;right:0;top:8px;height:2px;background:var(--track);border-radius:2px}
+.strip .reg{position:absolute;top:2px;width:2px;height:14px;background:var(--ink);opacity:.55}
+.strip .dot{position:absolute;top:3px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--eth);border:2px solid var(--bg)}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:999px;background:var(--panel);color:var(--ink2)}
+.pill.bad{background:color-mix(in srgb,var(--eth) 16%,transparent);color:var(--eth)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;vertical-align:middle;margin-right:6px}
+.key-dot{width:10px;height:10px;border-radius:50%;background:var(--eth)}
+.key-cmp{width:10px;height:10px;border-radius:2px;background:var(--cmp)}
+.key-bar{width:10px;height:10px;border-radius:2px;background:var(--bar)}
+.key-reg{width:2px;height:12px;background:var(--ink);opacity:.55}
+
+/* controls */
+.controls{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:end;margin-top:14px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:6px;padding:7px 30px 7px 10px;max-width:100%}
+select:focus-visible,button:focus-visible{outline:2px solid var(--cmp);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;background:var(--bg);color:var(--ink2);border:0;padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.note{font-size:13px;color:var(--ink2);background:var(--panel);border-radius:6px;padding:10px 12px;margin-top:12px;max-width:80ch}
+
+/* ranked bars */
+.chart{margin-top:10px;position:relative}
+.brow{display:grid;grid-template-columns:132px minmax(0,1fr) 52px;gap:10px;align-items:center;height:22px;cursor:default}
+.brow .nm{font-size:12.5px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink2)}
+.brow.eth .nm{color:var(--eth);font-weight:700}
+.brow.cmp .nm{color:var(--cmp);font-weight:600}
+.track{position:relative;height:14px}
+.fill{position:absolute;left:0;top:2px;height:10px;border-radius:0 4px 4px 0;background:var(--bar)}
+.brow.eth .fill{background:var(--eth)}
+.brow.cmp .fill{background:var(--cmp)}
+.ci{position:absolute;top:6px;height:2px;background:var(--ink);opacity:.35}
+.brow .val{font-size:12.5px;text-align:right;color:var(--ink2)}
+.brow.eth .val{color:var(--eth);font-weight:700}
+.brow:hover .nm,.brow:hover .val{color:var(--ink)}
+.brow:hover .fill{filter:brightness(.92)}
+.regline{position:absolute;top:0;bottom:0;width:0;border-left:1.5px dashed var(--ink);opacity:.6;pointer-events:none}
+.reglab{position:absolute;top:-18px;font-size:11px;color:var(--muted);white-space:nowrap;transform:translateX(4px)}
+.axis{display:grid;grid-template-columns:132px minmax(0,1fr) 52px;gap:10px;margin-top:6px}
+.axis .ticks{position:relative;height:16px;font-size:11px;color:var(--muted)}
+.axis .ticks span{position:absolute;transform:translateX(-50%)}
+.tip{position:fixed;z-index:10;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;line-height:1.4;padding:8px 10px;border-radius:6px;max-width:240px;opacity:0;transition:opacity .08s}
+.tip b{display:block;font-size:13px}
+@media (prefers-reduced-motion:reduce){.tip{transition:none}}
+
+/* tables */
+.tbl{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+code{font-family:var(--mono);font-size:12.5px;background:var(--panel);padding:1px 5px;border-radius:4px;white-space:nowrap}
+tr.eth td{color:var(--eth);font-weight:600}
+.method{font-size:13.5px;color:var(--ink2);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px}
+.method p{min-width:0}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:10px}
+
+@media (max-width:560px){
+  .srow{grid-template-columns:minmax(0,1fr) 52px 52px;row-gap:4px}
+  .srow .rank{display:none}
+  .srow .strip{grid-column:1/-1}
+  .srow.head .hs{display:none}
+  .brow,.axis{grid-template-columns:96px minmax(0,1fr) 44px;gap:8px}
+}
+@media print{body{padding-block:0}.controls{display:none}.pb{break-before:page}section{break-inside:avoid}.brow{height:19px}.wrap{gap:20px}footer{break-inside:avoid}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Indicator dashboard · Digital finance · Sub-Saharan Africa</div>
+  <h1>Ethiopians open accounts. They rarely use them digitally.</h1>
+  <p class="lede">Nine indicators of access and digital use for 35 countries, from the World Bank's 2025 Global Findex survey. Ethiopia is below the regional figure on account ownership, and near the bottom on almost every measure of digital use.</p>
+  <div class="meta"><span>Analysis and design: Dawit Sileshi</span><span>Data: Global Findex 2025 microdata (fielded 2024) · about 1,000 adults per country, weighted</span></div>
+</header>
+
+<section class="hero" aria-label="Headline figures">
+  <div class="stat eth"><b class="num" id="h1">58%</b><span>of Ethiopian account holders made or received no digital payment in a year. Highest of 35 countries.</span></div>
+  <div class="stat"><b class="num" id="h2">13%</b><span>is the same figure for Sub-Saharan Africa as a whole, weighted by adult population.</span></div>
+  <div class="stat"><b class="num" id="h3">9.5%</b><span>of Ethiopian adults have a mobile money account. Only Niger is lower among the 34 countries asked.</span></div>
+</section>
+
+<section aria-labelledby="sc-h">
+  <h2 id="sc-h">Ethiopia scorecard</h2>
+  <p class="sub">Ethiopia against the regional figure. Rank is out of the countries measured, 1 = best.</p>
+  <div class="legend"><span><i class="key-dot"></i>Ethiopia</span><span><i class="key-reg"></i>Sub-Saharan Africa</span></div>
+  <div class="score" id="score" role="table" aria-label="Ethiopia scorecard"></div>
+</section>
+
+<section class="pb" aria-labelledby="rk-h">
+  <h2 id="rk-h">Compare all 35 countries</h2>
+  <p class="sub">Pick an indicator. Hover a bar for the value and its 95% margin. The dashed line is the regional figure.</p>
+  <div class="controls">
+    <div class="field"><label for="ind">Indicator</label><select id="ind"></select></div>
+    <div class="field"><label for="cmp">Compare with</label><select id="cmp"></select></div>
+    <div class="field"><label>View</label>
+      <div class="seg" role="group" aria-label="View"><button type="button" id="vChart" aria-pressed="true">Chart</button><button type="button" id="vTable" aria-pressed="false">Table</button></div>
+    </div>
+  </div>
+  <div class="legend"><span><i class="key-dot" style="border-radius:2px"></i>Ethiopia</span><span><i class="key-cmp"></i><span id="cmpName">Kenya</span></span><span><i class="key-bar"></i>Other countries</span><span><i class="key-reg"></i>Sub-Saharan Africa</span></div>
+  <p class="note" id="indNote"></p>
+  <div id="chartView"><div class="chart" id="chart" style="margin-top:26px"></div><div class="axis"><span></span><div class="ticks" id="ticks"></div><span></span></div></div>
+  <div class="tbl" id="tableView" hidden></div>
+</section>
+
+<section class="pb" aria-labelledby="dict-h">
+  <h2 id="dict-h">Indicator dictionary</h2>
+  <p class="sub">How each figure is built. Variable names are from the Findex 2025 microdata file. All shares use the survey weight.</p>
+  <div class="tbl"><table id="dict"><thead><tr><th>Indicator</th><th>Definition</th><th>Rule</th><th>Base</th><th>Better is</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section aria-labelledby="m-h">
+  <h2 id="m-h">Method and limits</h2>
+  <div class="method" style="margin-top:10px">
+    <p><b>Validation.</b> Ethiopia's figures match the published Findex 2025 values: account ownership 48.8%, mobile money 9.5%, digital payments 20.7%. The same code produces every country.</p>
+    <p><b>Country figures</b> use each country's survey weight. <b>The regional figure</b> rescales each country's weights to its adult population, so large countries count more, as they should for a "share of African adults" figure.</p>
+    <p><b>Margins</b> are approximate 95% intervals from the effective sample size of the weights. Clustering isn't in the public file, so true margins are wider. Countries a few points apart are often not different.</p>
+    <p><b>Limits.</b> One survey round, about 1,000 adults per country. Mauritania was not asked about mobile money. These are shares of adults, not counts of accounts; Ethiopia's 135 million-plus wallets are accounts, many of them unused or held by the same person.</p>
+  </div>
+</section>
+
+<footer>Source: World Bank, Global Findex Database 2025 (doi.org/10.48529/bk9n-8r43). Independent analysis by Dawit Sileshi. Not affiliated with the World Bank or Shega.</footer>
+</div>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+const DATA={"order": ["acct_no_digpay", "account", "mobile_money", "dig_pay", "merchant_dig", "phone", "smartphone", "internet", "phone_no_acct"], "defs": {"account": ["Has an account", "Account at a bank or similar financial institution, or a mobile money account.", "account = 1", "All adults 15+", "higher"], "mobile_money": ["Has a mobile money account", "Personally uses a mobile money service to send, receive or store money.", "account_mob = 1", "All adults 15+ (not asked in Mauritania)", "higher"], "dig_pay": ["Made or received a digital payment", "Any digital payment in the past 12 months: wages, transfers, bills, purchases, remittances.", "anydigpayment = 1", "All adults 15+", "higher"], "merchant_dig": ["Paid a merchant digitally", "Used a card, phone or the internet to pay in a shop or online.", "merchantpay_dig = 1", "All adults 15+", "higher"], "phone": ["Owns a mobile phone", "Has a mobile phone used for personal calls.", "con1 = 1", "Adults who answered yes or no", "higher"], "smartphone": ["Owns a smartphone", "Owns a phone, and the main phone is a smartphone.", "con1 = 1 and con9 = 1", "Adults who answered both questions", "higher"], "internet": ["Used the internet", "Used the internet in the past three months.", "internet_use = 1", "All adults 15+", "higher"], "phone_no_acct": ["Owns a phone, no account", "Has a mobile phone but no account of any kind.", "con1 = 1 and account = 0", "Adults who answered the phone question", "lower"], "acct_no_digpay": ["Account but no digital payment", "Has an account but made or received no digital payment in the past 12 months.", "anydigpayment = 0", "Account holders only", "lower"]}, "rows": [{"economy": "Benin", "code": "BEN", "n": 1000, "pop_adult": 8207504.0, "account": 51.8, "account_moe": 4.3, "mobile_money": 44.9, "mobile_money_moe": 4.3, "dig_pay": 47.7, "dig_pay_moe": 4.3, "phone": 77.0, "phone_moe": 3.6, "smartphone": 29.0, "smartphone_moe": 3.9, "internet": 34.3, "internet_moe": 4.1, "phone_no_acct": 29.3, "phone_no_acct_moe": 3.9, "acct_no_digpay": 7.9, "acct_no_digpay_moe": 3.1, "merchant_dig": 6.8, "merchant_dig_moe": 2.2}, {"economy": "Botswana", "code": "BWA", "n": 1000, "pop_adult": 1679590.0, "account": 61.4, "account_moe": 3.9, "mobile_money": 51.6, "mobile_money_moe": 4.0, "dig_pay": 56.9, "dig_pay_moe": 4.0, "phone": 88.3, "phone_moe": 2.6, "smartphone": 44.8, "smartphone_moe": 4.0, "internet": 47.3, "internet_moe": 4.0, "phone_no_acct": 30.1, "phone_no_acct_moe": 3.7, "acct_no_digpay": 7.3, "acct_no_digpay_moe": 2.6, "merchant_dig": 25.6, "merchant_dig_moe": 3.5}, {"economy": "Burkina Faso", "code": "BFA", "n": 1000, "pop_adult": 13262560.0, "account": 51.4, "account_moe": 3.7, "mobile_money": 44.2, "mobile_money_moe": 3.7, "dig_pay": 48.4, "dig_pay_moe": 3.7, "phone": 87.8, "phone_moe": 2.4, "smartphone": 37.4, "smartphone_moe": 3.6, "internet": 31.3, "internet_moe": 3.5, "phone_no_acct": 39.3, "phone_no_acct_moe": 3.6, "acct_no_digpay": 5.8, "acct_no_digpay_moe": 2.4, "merchant_dig": 12.0, "merchant_dig_moe": 2.4}, {"economy": "Cameroon", "code": "CMR", "n": 1000, "pop_adult": 16524096.0, "account": 60.9, "account_moe": 3.6, "mobile_money": 55.1, "mobile_money_moe": 3.7, "dig_pay": 59.6, "dig_pay_moe": 3.6, "phone": 77.8, "phone_moe": 3.0, "smartphone": 41.6, "smartphone_moe": 3.6, "internet": 46.2, "internet_moe": 3.7, "phone_no_acct": 21.4, "phone_no_acct_moe": 3.0, "acct_no_digpay": 2.0, "acct_no_digpay_moe": 1.3, "merchant_dig": 20.3, "merchant_dig_moe": 3.0}, {"economy": "Chad", "code": "TCD", "n": 1000, "pop_adult": 10289880.0, "account": 20.9, "account_moe": 3.4, "mobile_money": 13.3, "mobile_money_moe": 2.9, "dig_pay": 18.0, "dig_pay_moe": 3.2, "phone": 53.5, "phone_moe": 4.2, "smartphone": 8.7, "smartphone_moe": 2.4, "internet": 11.4, "internet_moe": 2.7, "phone_no_acct": 38.6, "phone_no_acct_moe": 4.1, "acct_no_digpay": 13.7, "acct_no_digpay_moe": 6.0, "merchant_dig": 5.0, "merchant_dig_moe": 1.8}, {"economy": "Comoros", "code": "COM", "n": 1000, "pop_adult": 532331.0, "account": 45.5, "account_moe": 4.1, "mobile_money": 14.1, "mobile_money_moe": 2.9, "dig_pay": 28.3, "dig_pay_moe": 3.7, "phone": 71.9, "phone_moe": 3.7, "smartphone": 47.7, "smartphone_moe": 4.1, "internet": 43.4, "internet_moe": 4.1, "phone_no_acct": 33.8, "phone_no_acct_moe": 3.9, "acct_no_digpay": 37.7, "acct_no_digpay_moe": 5.7, "merchant_dig": 6.8, "merchant_dig_moe": 2.1}, {"economy": "Congo, Dem. Rep.", "code": "COD", "n": 1000, "pop_adult": 57033055.0, "account": 39.2, "account_moe": 4.5, "mobile_money": 35.1, "mobile_money_moe": 4.4, "dig_pay": 37.1, "dig_pay_moe": 4.5, "phone": 54.4, "phone_moe": 4.6, "smartphone": 20.6, "smartphone_moe": 3.7, "internet": 32.1, "internet_moe": 4.3, "phone_no_acct": 20.3, "phone_no_acct_moe": 3.7, "acct_no_digpay": 5.5, "acct_no_digpay_moe": 3.0, "merchant_dig": 7.4, "merchant_dig_moe": 2.4}, {"economy": "Congo, Rep.", "code": "COG", "n": 1000, "pop_adult": 3655093.0, "account": 55.6, "account_moe": 4.3, "mobile_money": 51.6, "mobile_money_moe": 4.3, "dig_pay": 54.2, "dig_pay_moe": 4.3, "phone": 73.2, "phone_moe": 3.8, "smartphone": 26.6, "smartphone_moe": 3.8, "internet": 33.9, "internet_moe": 4.1, "phone_no_acct": 25.6, "phone_no_acct_moe": 3.7, "acct_no_digpay": 2.5, "acct_no_digpay_moe": 1.8, "merchant_dig": 9.9, "merchant_dig_moe": 2.6}, {"economy": "Cote d'Ivoire", "code": "CIV", "n": 1000, "pop_adult": 18301587.0, "account": 57.6, "account_moe": 3.7, "mobile_money": 53.4, "mobile_money_moe": 3.7, "dig_pay": 56.5, "dig_pay_moe": 3.7, "phone": 89.2, "phone_moe": 2.3, "smartphone": 45.9, "smartphone_moe": 3.7, "internet": 47.2, "internet_moe": 3.7, "phone_no_acct": 33.6, "phone_no_acct_moe": 3.5, "acct_no_digpay": 1.9, "acct_no_digpay_moe": 1.3, "merchant_dig": 9.2, "merchant_dig_moe": 2.1}, {"economy": "Eswatini", "code": "SWZ", "n": 1051, "pop_adult": 816208.0, "account": 65.1, "account_moe": 3.8, "mobile_money": 50.4, "mobile_money_moe": 4.0, "dig_pay": 61.2, "dig_pay_moe": 3.9, "phone": 86.2, "phone_moe": 2.7, "smartphone": 49.5, "smartphone_moe": 4.0, "internet": 51.6, "internet_moe": 4.0, "phone_no_acct": 26.0, "phone_no_acct_moe": 3.5, "acct_no_digpay": 6.0, "acct_no_digpay_moe": 2.2, "merchant_dig": 18.2, "merchant_dig_moe": 3.1}, {"economy": "Ethiopia", "code": "ETH", "n": 1001, "pop_adult": 78031387.0, "account": 48.8, "account_moe": 4.0, "mobile_money": 9.5, "mobile_money_moe": 2.4, "dig_pay": 20.7, "dig_pay_moe": 3.3, "phone": 58.1, "phone_moe": 4.0, "smartphone": 16.3, "smartphone_moe": 3.0, "internet": 13.8, "internet_moe": 2.8, "phone_no_acct": 19.8, "phone_no_acct_moe": 3.2, "acct_no_digpay": 57.7, "acct_no_digpay_moe": 5.4, "merchant_dig": 5.9, "merchant_dig_moe": 1.9}, {"economy": "Gabon", "code": "GAB", "n": 1000, "pop_adult": 1573811.0, "account": 68.2, "account_moe": 3.8, "mobile_money": 61.6, "mobile_money_moe": 3.9, "dig_pay": 66.5, "dig_pay_moe": 3.8, "phone": 87.2, "phone_moe": 2.7, "smartphone": 59.9, "smartphone_moe": 4.0, "internet": 68.7, "internet_moe": 3.7, "phone_no_acct": 24.3, "phone_no_acct_moe": 3.5, "acct_no_digpay": 2.4, "acct_no_digpay_moe": 1.4, "merchant_dig": 20.1, "merchant_dig_moe": 3.2}, {"economy": "Gambia, The", "code": "GMB", "n": 1008, "pop_adult": 1598990.0, "account": 38.2, "account_moe": 3.6, "mobile_money": 19.1, "mobile_money_moe": 2.9, "dig_pay": 27.7, "dig_pay_moe": 3.3, "phone": 79.9, "phone_moe": 3.0, "smartphone": 64.2, "smartphone_moe": 3.5, "internet": 64.8, "internet_moe": 3.5, "phone_no_acct": 45.3, "phone_no_acct_moe": 3.7, "acct_no_digpay": 27.4, "acct_no_digpay_moe": 5.1, "merchant_dig": 3.2, "merchant_dig_moe": 1.3}, {"economy": "Ghana", "code": "GHA", "n": 1000, "pop_adult": 21563813.0, "account": 81.2, "account_moe": 2.8, "mobile_money": 78.3, "mobile_money_moe": 3.0, "dig_pay": 80.4, "dig_pay_moe": 2.9, "phone": 87.9, "phone_moe": 2.4, "smartphone": 53.8, "smartphone_moe": 3.6, "internet": 54.8, "internet_moe": 3.6, "phone_no_acct": 8.9, "phone_no_acct_moe": 2.1, "acct_no_digpay": 1.1, "acct_no_digpay_moe": 0.8, "merchant_dig": 27.3, "merchant_dig_moe": 3.2}, {"economy": "Guinea", "code": "GIN", "n": 1000, "pop_adult": 8464230.0, "account": 36.0, "account_moe": 3.9, "mobile_money": 25.8, "mobile_money_moe": 3.6, "dig_pay": 31.8, "dig_pay_moe": 3.8, "phone": 82.3, "phone_moe": 3.1, "smartphone": 26.6, "smartphone_moe": 3.6, "internet": 31.0, "internet_moe": 3.8, "phone_no_acct": 48.5, "phone_no_acct_moe": 4.1, "acct_no_digpay": 11.9, "acct_no_digpay_moe": 4.1, "merchant_dig": 8.4, "merchant_dig_moe": 2.3}, {"economy": "Kenya", "code": "KEN", "n": 1000, "pop_adult": 34616135.0, "account": 90.1, "account_moe": 2.1, "mobile_money": 87.5, "mobile_money_moe": 2.4, "dig_pay": 89.3, "dig_pay_moe": 2.2, "phone": 92.7, "phone_moe": 1.9, "smartphone": 55.0, "smartphone_moe": 3.5, "internet": 60.5, "internet_moe": 3.5, "phone_no_acct": 5.5, "phone_no_acct_moe": 1.6, "acct_no_digpay": 0.9, "acct_no_digpay_moe": 0.7, "merchant_dig": 55.8, "merchant_dig_moe": 3.5}, {"economy": "Lesotho", "code": "LSO", "n": 1020, "pop_adult": 1504222.0, "account": 61.6, "account_moe": 4.2, "mobile_money": 53.5, "mobile_money_moe": 4.3, "dig_pay": 58.4, "dig_pay_moe": 4.3, "phone": 79.5, "phone_moe": 3.5, "smartphone": 45.6, "smartphone_moe": 4.3, "internet": 45.9, "internet_moe": 4.3, "phone_no_acct": 23.3, "phone_no_acct_moe": 3.7, "acct_no_digpay": 5.2, "acct_no_digpay_moe": 2.3, "merchant_dig": 15.7, "merchant_dig_moe": 3.1}, {"economy": "Liberia", "code": "LBR", "n": 1001, "pop_adult": 3295997.0, "account": 52.2, "account_moe": 3.6, "mobile_money": 47.5, "mobile_money_moe": 3.6, "dig_pay": 50.2, "dig_pay_moe": 3.6, "phone": 70.0, "phone_moe": 3.3, "smartphone": 22.7, "smartphone_moe": 3.0, "internet": 32.9, "internet_moe": 3.4, "phone_no_acct": 25.0, "phone_no_acct_moe": 3.2, "acct_no_digpay": 3.9, "acct_no_digpay_moe": 1.9, "merchant_dig": 6.5, "merchant_dig_moe": 1.8}, {"economy": "Madagascar", "code": "MDG", "n": 1000, "pop_adult": 18851036.0, "account": 24.5, "account_moe": 3.1, "mobile_money": 19.4, "mobile_money_moe": 2.8, "dig_pay": 21.7, "dig_pay_moe": 3.0, "phone": 45.9, "phone_moe": 3.6, "smartphone": 8.9, "smartphone_moe": 2.1, "internet": 11.1, "internet_moe": 2.3, "phone_no_acct": 26.4, "phone_no_acct_moe": 3.2, "acct_no_digpay": 11.1, "acct_no_digpay_moe": 4.4, "merchant_dig": 2.4, "merchant_dig_moe": 1.1}, {"economy": "Malawi", "code": "MWI", "n": 1000, "pop_adult": 12384937.0, "account": 50.4, "account_moe": 3.6, "mobile_money": 47.4, "mobile_money_moe": 3.6, "dig_pay": 48.9, "dig_pay_moe": 3.6, "phone": 59.0, "phone_moe": 3.5, "smartphone": 13.7, "smartphone_moe": 2.5, "internet": 20.5, "internet_moe": 2.9, "phone_no_acct": 17.4, "phone_no_acct_moe": 2.7, "acct_no_digpay": 3.0, "acct_no_digpay_moe": 1.7, "merchant_dig": 10.4, "merchant_dig_moe": 2.2}, {"economy": "Mali", "code": "MLI", "n": 1002, "pop_adult": 12725942.0, "account": 54.7, "account_moe": 4.0, "mobile_money": 48.4, "mobile_money_moe": 4.0, "dig_pay": 51.8, "dig_pay_moe": 4.0, "phone": 84.2, "phone_moe": 2.9, "smartphone": 48.5, "smartphone_moe": 4.0, "internet": 46.0, "internet_moe": 4.0, "phone_no_acct": 31.6, "phone_no_acct_moe": 3.7, "acct_no_digpay": 5.4, "acct_no_digpay_moe": 2.3, "merchant_dig": 10.2, "merchant_dig_moe": 2.4}, {"economy": "Mauritania", "code": "MRT", "n": 1000, "pop_adult": 2860979.0, "account": 27.3, "account_moe": 3.5, "mobile_money": null, "mobile_money_moe": null, "dig_pay": 24.4, "dig_pay_moe": 3.4, "phone": 85.3, "phone_moe": 2.8, "smartphone": 56.6, "smartphone_moe": 3.9, "internet": 59.8, "internet_moe": 3.9, "phone_no_acct": 60.0, "phone_no_acct_moe": 3.9, "acct_no_digpay": 10.7, "acct_no_digpay_moe": 4.4, "merchant_dig": 12.3, "merchant_dig_moe": 2.6}, {"economy": "Mauritius", "code": "MUS", "n": 1000, "pop_adult": 1070318.0, "account": 89.6, "account_moe": 2.5, "mobile_money": 10.1, "mobile_money_moe": 2.4, "dig_pay": 64.0, "dig_pay_moe": 3.9, "phone": 93.6, "phone_moe": 2.0, "smartphone": 67.1, "smartphone_moe": 3.8, "internet": 77.2, "internet_moe": 3.4, "phone_no_acct": 8.2, "phone_no_acct_moe": 2.2, "acct_no_digpay": 28.5, "acct_no_digpay_moe": 3.8, "merchant_dig": 49.9, "merchant_dig_moe": 4.0}, {"economy": "Mozambique", "code": "MOZ", "n": 1008, "pop_adult": 18581790.0, "account": 54.4, "account_moe": 4.8, "mobile_money": 45.7, "mobile_money_moe": 4.8, "dig_pay": 50.5, "dig_pay_moe": 4.8, "phone": 62.2, "phone_moe": 4.6, "smartphone": 20.4, "smartphone_moe": 3.9, "internet": 27.1, "internet_moe": 4.3, "phone_no_acct": 15.0, "phone_no_acct_moe": 3.4, "acct_no_digpay": 7.1, "acct_no_digpay_moe": 3.1, "merchant_dig": 18.5, "merchant_dig_moe": 3.7}, {"economy": "Namibia", "code": "NAM", "n": 1000, "pop_adult": 1858089.0, "account": 72.9, "account_moe": 3.4, "mobile_money": 48.4, "mobile_money_moe": 3.8, "dig_pay": 67.6, "dig_pay_moe": 3.6, "phone": 80.4, "phone_moe": 3.0, "smartphone": 52.2, "smartphone_moe": 3.8, "internet": 56.4, "internet_moe": 3.8, "phone_no_acct": 16.5, "phone_no_acct_moe": 2.8, "acct_no_digpay": 7.3, "acct_no_digpay_moe": 2.3, "merchant_dig": 38.6, "merchant_dig_moe": 3.7}, {"economy": "Niger", "code": "NER", "n": 1000, "pop_adult": 13873697.0, "account": 14.8, "account_moe": 2.9, "mobile_money": 5.7, "mobile_money_moe": 1.9, "dig_pay": 12.3, "dig_pay_moe": 2.7, "phone": 53.7, "phone_moe": 4.0, "smartphone": 18.2, "smartphone_moe": 3.1, "internet": 15.6, "internet_moe": 2.9, "phone_no_acct": 44.0, "phone_no_acct_moe": 4.0, "acct_no_digpay": 17.3, "acct_no_digpay_moe": 7.6, "merchant_dig": 2.4, "merchant_dig_moe": 1.2}, {"economy": "Nigeria", "code": "NGA", "n": 1000, "pop_adult": 133329232.0, "account": 63.3, "account_moe": 4.2, "mobile_money": 32.8, "mobile_money_moe": 4.1, "dig_pay": 54.5, "dig_pay_moe": 4.3, "phone": 83.8, "phone_moe": 3.2, "smartphone": 33.8, "smartphone_moe": 4.1, "internet": 37.7, "internet_moe": 4.2, "phone_no_acct": 23.0, "phone_no_acct_moe": 3.7, "acct_no_digpay": 13.9, "acct_no_digpay_moe": 3.4, "merchant_dig": 28.4, "merchant_dig_moe": 3.9}, {"economy": "Senegal", "code": "SEN", "n": 1000, "pop_adult": 11094279.0, "account": 76.5, "account_moe": 3.4, "mobile_money": 66.9, "mobile_money_moe": 3.8, "dig_pay": 73.5, "dig_pay_moe": 3.5, "phone": 87.4, "phone_moe": 2.7, "smartphone": 60.9, "smartphone_moe": 3.9, "internet": 70.1, "internet_moe": 3.7, "phone_no_acct": 16.1, "phone_no_acct_moe": 2.9, "acct_no_digpay": 3.9, "acct_no_digpay_moe": 1.7, "merchant_dig": 37.0, "merchant_dig_moe": 3.9}, {"economy": "Sierra Leone", "code": "SLE", "n": 1001, "pop_adult": 5200533.0, "account": 38.6, "account_moe": 3.6, "mobile_money": 32.2, "mobile_money_moe": 3.4, "dig_pay": 36.7, "dig_pay_moe": 3.5, "phone": 59.1, "phone_moe": 3.6, "smartphone": 28.6, "smartphone_moe": 3.3, "internet": 32.8, "internet_moe": 3.4, "phone_no_acct": 26.6, "phone_no_acct_moe": 3.2, "acct_no_digpay": 4.9, "acct_no_digpay_moe": 2.4, "merchant_dig": 5.2, "merchant_dig_moe": 1.6}, {"economy": "South Africa", "code": "ZAF", "n": 1000, "pop_adult": 46723498.0, "account": 81.1, "account_moe": 3.1, "mobile_money": 31.6, "mobile_money_moe": 3.7, "dig_pay": 67.2, "dig_pay_moe": 3.7, "phone": 87.1, "phone_moe": 2.7, "smartphone": 67.8, "smartphone_moe": 3.7, "internet": 68.3, "internet_moe": 3.7, "phone_no_acct": 12.8, "phone_no_acct_moe": 2.6, "acct_no_digpay": 17.2, "acct_no_digpay_moe": 3.3, "merchant_dig": 46.9, "merchant_dig_moe": 4.0}, {"economy": "Tanzania", "code": "TZA", "n": 1000, "pop_adult": 38155970.0, "account": 59.8, "account_moe": 3.7, "mobile_money": 52.9, "mobile_money_moe": 3.7, "dig_pay": 57.1, "dig_pay_moe": 3.7, "phone": 77.8, "phone_moe": 3.1, "smartphone": 15.6, "smartphone_moe": 2.7, "internet": 20.4, "internet_moe": 3.0, "phone_no_acct": 21.6, "phone_no_acct_moe": 3.1, "acct_no_digpay": 4.5, "acct_no_digpay_moe": 1.9, "merchant_dig": 3.9, "merchant_dig_moe": 1.4}, {"economy": "Togo", "code": "TGO", "n": 1000, "pop_adult": 5593530.0, "account": 57.4, "account_moe": 4.4, "mobile_money": 48.0, "mobile_money_moe": 4.4, "dig_pay": 53.1, "dig_pay_moe": 4.4, "phone": 82.7, "phone_moe": 3.3, "smartphone": 45.2, "smartphone_moe": 4.4, "internet": 43.7, "internet_moe": 4.4, "phone_no_acct": 29.9, "phone_no_acct_moe": 4.0, "acct_no_digpay": 7.6, "acct_no_digpay_moe": 2.8, "merchant_dig": 13.8, "merchant_dig_moe": 3.0}, {"economy": "Uganda", "code": "UGA", "n": 1000, "pop_adult": 27277834.0, "account": 72.8, "account_moe": 3.6, "mobile_money": 67.7, "mobile_money_moe": 3.7, "dig_pay": 70.6, "dig_pay_moe": 3.6, "phone": 78.6, "phone_moe": 3.3, "smartphone": 27.6, "smartphone_moe": 3.6, "internet": 38.2, "internet_moe": 3.9, "phone_no_acct": 12.0, "phone_no_acct_moe": 2.6, "acct_no_digpay": 3.0, "acct_no_digpay_moe": 1.5, "merchant_dig": 11.7, "merchant_dig_moe": 2.6}, {"economy": "Zambia", "code": "ZMB", "n": 1000, "pop_adult": 12029200.0, "account": 72.7, "account_moe": 3.8, "mobile_money": 69.3, "mobile_money_moe": 4.0, "dig_pay": 71.2, "dig_pay_moe": 3.9, "phone": 79.1, "phone_moe": 3.5, "smartphone": 29.6, "smartphone_moe": 3.9, "internet": 38.9, "internet_moe": 4.2, "phone_no_acct": 12.4, "phone_no_acct_moe": 2.8, "acct_no_digpay": 2.1, "acct_no_digpay_moe": 1.4, "merchant_dig": 19.2, "merchant_dig_moe": 3.4}, {"economy": "Zimbabwe", "code": "ZWE", "n": 1001, "pop_adult": 9588258.0, "account": 49.5, "account_moe": 3.6, "mobile_money": 43.3, "mobile_money_moe": 3.5, "dig_pay": 46.7, "dig_pay_moe": 3.5, "phone": 81.6, "phone_moe": 2.8, "smartphone": 49.7, "smartphone_moe": 3.6, "internet": 31.6, "internet_moe": 3.3, "phone_no_acct": 34.4, "phone_no_acct_moe": 3.4, "acct_no_digpay": 5.7, "acct_no_digpay_moe": 2.3, "merchant_dig": 29.1, "merchant_dig_moe": 3.2}], "region": {"account": 58.2, "mobile_money": 40.2, "dig_pay": 50.6, "phone": 74.7, "smartphone": 33.0, "internet": 36.3, "phone_no_acct": 21.5, "acct_no_digpay": 13.1, "merchant_dig": 19.5}};
+(function(){
+const D=DATA, R=D.rows, REG=D.region, ORDER=D.order, DEF=D.defs;
+const $=id=>document.getElementById(id);
+const fmt=v=>v==null?'–':(v>=10?v.toFixed(0):v.toFixed(1))+'%';
+const fmt1=v=>v==null?'–':v.toFixed(1)+'%';
+const eth=R.find(r=>r.economy==='Ethiopia');
+function ranked(k){const better=DEF[k][4];return R.filter(r=>r[k]!=null).sort((a,b)=>better==='higher'?b[k]-a[k]:a[k]-b[k]);}
+function rankOf(k,name){const l=ranked(k);return [l.findIndex(r=>r.economy===name)+1,l.length];}
+
+/* scorecard */
+let h='<div class="srow head" role="row"><span>Indicator</span><span class="v" style="text-align:right">Ethiopia</span><span class="r" style="text-align:right">Region</span><span class="rank hs" style="text-align:right">Rank</span><span class="hs">0 – 100%</span></div>';
+ORDER.forEach(k=>{
+  const [rk,n]=rankOf(k,'Ethiopia');const bottom=rk>n*0.75;
+  h+=`<div class="srow" role="row"><span class="lab">${DEF[k][0]}<small>${DEF[k][4]==='lower'?'Lower is better':'Higher is better'}</small></span>
+  <span class="v num" style="color:var(--eth)">${fmt1(eth[k])}</span><span class="r num">${fmt1(REG[k])}</span>
+  <span class="rank num"><span class="pill${bottom?' bad':''}">${rk} / ${n}</span></span>
+  <span class="strip" aria-hidden="true"><span class="ln"></span><span class="reg" style="left:${REG[k]}%"></span><span class="dot" style="left:${eth[k]}%"></span></span></div>`;
+});
+$('score').innerHTML=h;
+
+/* controls */
+const ind=$('ind'),cmp=$('cmp');
+ORDER.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=DEF[k][0];ind.appendChild(o);});
+R.map(r=>r.economy).filter(e=>e!=='Ethiopia').sort().forEach(e=>{const o=document.createElement('option');o.value=e;o.textContent=e;cmp.appendChild(o);});
+let state={ind:'acct_no_digpay',cmp:'Kenya',view:'chart'};
+try{const s=JSON.parse(localStorage.getItem('afdi')||'{}');if(DEF[s.ind])state.ind=s.ind;if(R.some(r=>r.economy===s.cmp))state.cmp=s.cmp;if(s.view)state.view=s.view;}catch(e){}
+const hash=location.hash.slice(1);if(DEF[hash])state.ind=hash;
+function save(){try{localStorage.setItem('afdi',JSON.stringify(state));}catch(e){}}
+
+const tip=$('tip');
+function showTip(e,r,k){
+  const [rk,n]=rankOf(k,r.economy);
+  tip.innerHTML=`<b>${r.economy}</b>${fmt1(r[k])} ± ${r[k+'_moe']} pts<br>Rank ${rk} of ${n} · ${r.n.toLocaleString()} respondents`;
+  tip.style.opacity=1;moveTip(e);
+}
+function moveTip(e){const x=Math.min(e.clientX+14,window.innerWidth-250);tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px';}
+function hideTip(){tip.style.opacity=0;}
+
+function render(){
+  const k=state.ind;ind.value=k;cmp.value=state.cmp;$('cmpName').textContent=state.cmp;
+  const d=DEF[k];
+  const [rk,n]=rankOf(k,'Ethiopia');const c=R.find(r=>r.economy===state.cmp);
+  $('indNote').innerHTML=`<b>${d[0]}.</b> ${d[1]} Ethiopia: <b>${fmt1(eth[k])}</b>, rank ${rk} of ${n}. ${state.cmp}: ${fmt1(c[k])}. Region: ${fmt1(REG[k])}.`;
+  const list=R.filter(r=>r[k]!=null).sort((a,b)=>b[k]-a[k]);
+  const max=Math.max(...list.map(r=>r[k]+(r[k+'_moe']||0)),REG[k]);
+  const top=max>80?100:Math.ceil(max/20)*20;
+  const pct=v=>Math.max(0,Math.min(100,v/top*100));
+  let html='';
+  list.forEach((r,i)=>{
+    const cls=r.economy==='Ethiopia'?'eth':(r.economy===state.cmp?'cmp':'');
+    const lo=pct(r[k]-r[k+'_moe']),hi=pct(r[k]+r[k+'_moe']);
+    html+=`<div class="brow ${cls}" data-i="${i}"><span class="nm">${r.economy}</span><span class="track"><span class="fill" style="width:${pct(r[k])}%"></span><span class="ci" style="left:${lo}%;width:${hi-lo}%"></span></span><span class="val num">${fmt(r[k])}</span></div>`;
+  });
+  const ch=$('chart');ch.innerHTML=html;
+  // regional line positioned over the track column
+  const first=ch.querySelector('.track');
+  if(first){
+    const cr=ch.getBoundingClientRect(),tr=first.getBoundingClientRect();
+    const x=tr.left-cr.left+tr.width*pct(REG[k])/100;
+    const ln=document.createElement('div');ln.className='regline';ln.style.left=x+'px';
+    ln.innerHTML=`<span class="reglab">Region ${fmt(REG[k])}</span>`;ch.appendChild(ln);
+  }
+  ch.querySelectorAll('.brow').forEach(el=>{const r=list[+el.dataset.i];
+    el.addEventListener('mouseenter',e=>showTip(e,r,k));el.addEventListener('mousemove',moveTip);el.addEventListener('mouseleave',hideTip);});
+  let t='';for(let v=0;v<=top;v+=20)t+=`<span style="left:${v/top*100}%">${v}%</span>`;$('ticks').innerHTML=t;
+  // table
+  let tb=`<table><thead><tr><th>#</th><th>Country</th><th style="text-align:right">${d[0]}</th><th style="text-align:right">± 95%</th><th style="text-align:right">Respondents</th></tr></thead><tbody>`;
+  ranked(k).forEach((r,i)=>{tb+=`<tr class="${r.economy==='Ethiopia'?'eth':''}"><td class="n">${i+1}</td><td>${r.economy}</td><td class="n">${fmt1(r[k])}</td><td class="n">${r[k+'_moe']}</td><td class="n">${r.n.toLocaleString()}</td></tr>`;});
+  tb+=`<tr><td></td><td><b>Sub-Saharan Africa</b></td><td class="n"><b>${fmt1(REG[k])}</b></td><td></td><td></td></tr></tbody></table>`;
+  $('tableView').innerHTML=tb;
+  $('chartView').hidden=state.view!=='chart';$('tableView').hidden=state.view!=='table';
+  $('vChart').setAttribute('aria-pressed',state.view==='chart');$('vTable').setAttribute('aria-pressed',state.view==='table');
+}
+ind.addEventListener('change',()=>{state.ind=ind.value;save();render();});
+cmp.addEventListener('change',()=>{state.cmp=cmp.value;save();render();});
+$('vChart').addEventListener('click',()=>{state.view='chart';save();render();});
+$('vTable').addEventListener('click',()=>{state.view='table';save();render();});
+window.addEventListener('resize',()=>{clearTimeout(window.__rt);window.__rt=setTimeout(render,120);});
+
+/* dictionary */
+$('dict').querySelector('tbody').innerHTML=ORDER.map(k=>{const d=DEF[k];return `<tr><td><b>${d[0]}</b></td><td>${d[1]}</td><td><code>${d[2]}</code></td><td>${d[3]}</td><td>${d[4]}</td></tr>`}).join('');
+
+/* headline figures from data, so the page can't drift from the numbers */
+$('h1').textContent=Math.round(eth.acct_no_digpay)+'%';$('h2').textContent=Math.round(REG.acct_no_digpay)+'%';$('h3').textContent=eth.mobile_money.toFixed(1)+'%';
+render();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(render);
+})();
+</script>
+
+</body>
+</html>
