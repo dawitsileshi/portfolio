@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" data-theme="dark">
+<html lang="en" class="no-js" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dawit Sileshi — Full-stack engineer</title>
-<meta name="description" content="Dawit Sileshi, full-stack engineer in Addis Ababa. I build web systems, internal tools, and data platforms.">
-<meta name="theme-color" content="#0c0e11">
+<title>Dawit Sileshi — Data analysis and visual design</title>
+<meta name="description" content="Dawit Sileshi, Addis Ababa. Data analysis and visual design: survey analysis, charts, briefs and dashboards on Ethiopia's digital economy, and the software that collects the data.">
+<meta name="theme-color" content="#ffffff">
 
 <!-- Live URL. og:image must stay absolute or link previews lose the image.
      If the domain changes, update every occurrence below. -->
@@ -14,29 +14,32 @@
 <meta property="og:site_name" content="Dawit Sileshi">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://dawitsileshi.netlify.app/">
-<meta property="og:title" content="Dawit Sileshi — Full-stack engineer">
-<meta property="og:description" content="I build web systems, internal tools, and data platforms. Open to full-time roles and project work.">
+<meta property="og:title" content="Dawit Sileshi — Data analysis and visual design">
+<meta property="og:description" content="Survey analysis, charts, briefs and dashboards on Ethiopia's digital economy, and the software that collects the data.">
 <meta property="og:image" content="https://dawitsileshi.netlify.app/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Dawit Sileshi — full-stack engineer, Addis Ababa">
+<meta property="og:image:alt" content="Dawit Sileshi, Addis Ababa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dawit Sileshi — Full-stack engineer">
-<meta name="twitter:description" content="I build web systems, internal tools, and data platforms. Open to full-time roles and project work.">
+<meta name="twitter:title" content="Dawit Sileshi — Data analysis and visual design">
+<meta name="twitter:description" content="Survey analysis, charts, briefs and dashboards on Ethiopia's digital economy, and the software that collects the data.">
 <meta name="twitter:image" content="https://dawitsileshi.netlify.app/images/og-image.png">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<!-- Ethiopic face for the name only; text= keeps the download to those glyphs. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@500&text=%E1%8B%B3%E1%8B%8A%E1%89%B5%E1%88%B5%E1%88%88%E1%88%BA&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script>
-/* Set the theme before first paint so there is no flash. */
+/* Set the theme before first paint so there is no flash. Light unless the
+   visitor chose dark here or their system asks for it. */
 (function () {
-  var t = "dark";
+  var t = "light";
   try {
     t = localStorage.getItem("theme")
-      || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   } catch (e) {}
   document.documentElement.setAttribute("data-theme", t);
   document.documentElement.className = "js";
@@ -47,184 +50,374 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="page">
-
-  <div class="topbar">
-    <span class="wordmark">DS</span>
-    <button class="theme-toggle" id="theme-toggle" type="button">
-      <span class="theme-swatch" aria-hidden="true"></span>
-      <span id="theme-name">Dark</span>
-    </button>
+<!-- Stays pinned to the top while scrolling. The link for the section in view
+     is marked as current. -->
+<header class="site-header" id="top">
+  <div class="shell site-head">
+    <a class="brand" href="#top">Dawit Sileshi <span class="brand-am" lang="am">ዳዊት ስለሺ</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#data">Data work</a>
+      <a href="#software">Software</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
   </div>
+</header>
 
-  <header class="masthead">
-    <!-- Source order puts the photo first so it leads on mobile; on wide
-         screens grid placement moves it into the right-hand column. -->
-    <img class="portrait" src="images/portrait.jpg" alt="Dawit Sileshi" width="640" height="640" decoding="async">
-    <div class="masthead-text">
-      <h1>Dawit Sileshi</h1>
-      <p class="role">Full-stack engineer, Addis Ababa</p>
-      <p class="intro">I build web systems, internal tools, and data platforms. Open to full-time roles and project work.</p>
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="shell hero" aria-labelledby="hero-heading">
+    <div class="hero-text">
+      <h1 id="hero-heading">Analysis and design, from the raw file to the finished chart.</h1>
+      <p class="hero-intro">I'm Dawit, based in Addis Ababa. I clean and analyse survey and operational data in SQL, check it against published figures, and design the briefs and dashboards that present it. I also build the software that collects it.</p>
+      <p class="hero-actions">
+        <a class="btn btn-primary" href="#data">See the data work</a>
+        <a class="btn btn-quiet" href="Dawit_Sileshi_CV.pdf">Download CV (PDF)</a>
+      </p>
     </div>
-  </header>
 
-  <main id="main">
+    <figure class="hero-figure">
+      <p class="figure-title">Of every 100 Ethiopian adults</p>
+      <div class="waffle-wrap">
+        <div class="waffle" id="waffle" role="img" aria-label="Of every 100 Ethiopian adults, 38 have a phone and an account, 20 have a phone but no account, 11 have an account but no phone, and 31 have neither."><i data-g="both" style="--k:0"></i><i data-g="both" style="--k:1"></i><i data-g="both" style="--k:2"></i><i data-g="both" style="--k:3"></i><i data-g="both" style="--k:4"></i><i data-g="both" style="--k:5"></i><i data-g="both" style="--k:6"></i><i data-g="both" style="--k:7"></i><i data-g="both" style="--k:8"></i><i data-g="both" style="--k:9"></i><i data-g="both" style="--k:10"></i><i data-g="both" style="--k:11"></i><i data-g="both" style="--k:12"></i><i data-g="both" style="--k:13"></i><i data-g="both" style="--k:14"></i><i data-g="both" style="--k:15"></i><i data-g="both" style="--k:16"></i><i data-g="both" style="--k:17"></i><i data-g="both" style="--k:18"></i><i data-g="both" style="--k:19"></i><i data-g="both" style="--k:20"></i><i data-g="both" style="--k:21"></i><i data-g="both" style="--k:22"></i><i data-g="both" style="--k:23"></i><i data-g="both" style="--k:24"></i><i data-g="both" style="--k:25"></i><i data-g="both" style="--k:26"></i><i data-g="both" style="--k:27"></i><i data-g="both" style="--k:28"></i><i data-g="both" style="--k:29"></i><i data-g="both" style="--k:30"></i><i data-g="both" style="--k:31"></i><i data-g="both" style="--k:32"></i><i data-g="both" style="--k:33"></i><i data-g="both" style="--k:34"></i><i data-g="both" style="--k:35"></i><i data-g="both" style="--k:36"></i><i data-g="both" style="--k:37"></i><i data-g="hi" style="--k:38"></i><i data-g="hi" style="--k:39"></i><i data-g="hi" style="--k:40"></i><i data-g="hi" style="--k:41"></i><i data-g="hi" style="--k:42"></i><i data-g="hi" style="--k:43"></i><i data-g="hi" style="--k:44"></i><i data-g="hi" style="--k:45"></i><i data-g="hi" style="--k:46"></i><i data-g="hi" style="--k:47"></i><i data-g="hi" style="--k:48"></i><i data-g="hi" style="--k:49"></i><i data-g="hi" style="--k:50"></i><i data-g="hi" style="--k:51"></i><i data-g="hi" style="--k:52"></i><i data-g="hi" style="--k:53"></i><i data-g="hi" style="--k:54"></i><i data-g="hi" style="--k:55"></i><i data-g="hi" style="--k:56"></i><i data-g="hi" style="--k:57"></i><i data-g="acct" style="--k:58"></i><i data-g="acct" style="--k:59"></i><i data-g="acct" style="--k:60"></i><i data-g="acct" style="--k:61"></i><i data-g="acct" style="--k:62"></i><i data-g="acct" style="--k:63"></i><i data-g="acct" style="--k:64"></i><i data-g="acct" style="--k:65"></i><i data-g="acct" style="--k:66"></i><i data-g="acct" style="--k:67"></i><i data-g="acct" style="--k:68"></i><i data-g="none" style="--k:69"></i><i data-g="none" style="--k:70"></i><i data-g="none" style="--k:71"></i><i data-g="none" style="--k:72"></i><i data-g="none" style="--k:73"></i><i data-g="none" style="--k:74"></i><i data-g="none" style="--k:75"></i><i data-g="none" style="--k:76"></i><i data-g="none" style="--k:77"></i><i data-g="none" style="--k:78"></i><i data-g="none" style="--k:79"></i><i data-g="none" style="--k:80"></i><i data-g="none" style="--k:81"></i><i data-g="none" style="--k:82"></i><i data-g="none" style="--k:83"></i><i data-g="none" style="--k:84"></i><i data-g="none" style="--k:85"></i><i data-g="none" style="--k:86"></i><i data-g="none" style="--k:87"></i><i data-g="none" style="--k:88"></i><i data-g="none" style="--k:89"></i><i data-g="none" style="--k:90"></i><i data-g="none" style="--k:91"></i><i data-g="none" style="--k:92"></i><i data-g="none" style="--k:93"></i><i data-g="none" style="--k:94"></i><i data-g="none" style="--k:95"></i><i data-g="none" style="--k:96"></i><i data-g="none" style="--k:97"></i><i data-g="none" style="--k:98"></i><i data-g="none" style="--k:99"></i></div>
+        <ul class="legend" aria-label="Show a group">
+          <li><button type="button" data-g="both"><span class="sw"></span><span class="n">38</span><span class="l">have a phone and an account</span></button></li>
+          <li><button type="button" data-g="hi"><span class="sw"></span><span class="n">20</span><span class="l">have a phone but no account</span></button></li>
+          <li><button type="button" data-g="acct"><span class="sw"></span><span class="n">11</span><span class="l">have an account but no phone</span></button></li>
+          <li><button type="button" data-g="none"><span class="sw"></span><span class="n">31</span><span class="l">have neither</span></button></li>
+        </ul>
+      </div>
+      <p class="hero-read" id="waffle-read" aria-live="polite">20 in every 100 adults, about 15 million people, already carry a phone but have no account. Most of their phones can't run an app.</p>
+      <figcaption class="hero-source">Weighted shares from World Bank Global Findex 2025 microdata. From my brief <a href="data/phones-without-accounts/">Phones Without Accounts</a>.</figcaption>
+    </figure>
+  </section>
 
-    <section class="section" aria-labelledby="projects-heading">
-      <h2 class="section-heading" id="projects-heading">Projects</h2>
+  <!-- ============ DATA ============ -->
+  <section class="section" id="data" aria-labelledby="data-heading">
+    <div class="shell">
+      <header class="section-head">
+        <h2 id="data-heading">Data and visual work</h2>
+        <p>Independent projects on Ethiopia's digital economy. Each starts from raw microdata, is checked against a published figure before any analysis, and comes with the SQL that reproduces every number.</p>
+      </header>
 
-      <ol class="projects">
+      <div class="studies">
 
-        <li class="project reveal">
-          <span class="project-index">01</span>
-          <div class="project-main">
-            <h3 class="project-title">Danakil Hotel RMS</h3>
-            <p class="project-body">Production hotel and F&amp;B management system: reservations, point of sale, retail, inventory, reporting. In daily use at Danakil Hotel. Local-first architecture over the hotel LAN with an online replica for remote access and sync.</p>
-            <ul class="shots">
-              <li><img src="screenshots/01-room-dashboard.jpg" alt="Danakil Hotel RMS: room dashboard screen" width="1400" height="805" loading="lazy" decoding="async"></li>
-              <li><img src="screenshots/02-inventory-and-transfers.jpg" alt="Danakil Hotel RMS: inventory and transfers screen" width="1400" height="805" loading="lazy" decoding="async"></li>
-              <li><img src="screenshots/03-revenue-analytics.jpg" alt="Danakil Hotel RMS: revenue analytics screen" width="1400" height="805" loading="lazy" decoding="async"></li>
+        <article class="study">
+          <a class="study-chart" href="data/phones-without-accounts/" aria-label="Open Phones Without Accounts">
+            <span class="chart-title">Phone owners with no account, by group, with 95% intervals</span>
+            <div class="dp" style="--avg:56.67%">
+            <div class="dp-row dp-top"><span></span><span class="dp-track"><span class="dp-avg-label">All phone owners 34%</span></span><span></span></div>
+            <div class="dp-row dp-group"><span class="dp-label">Schooling</span><span class="dp-track"></span><span></span></div>
+            <div class="dp-row is-hi" title="Primary or less: 41.9% (95% interval 35.6 to 48.2)"><span class="dp-label">Primary or less</span><span class="dp-track"><span class="dp-ci" style="left:59.33%;width:21.00%"></span><span class="dp-dot" style="left:69.83%"></span></span><span class="dp-val">42%</span></div>
+            <div class="dp-row" title="Secondary: 16.6% (95% interval 11.4 to 21.8)"><span class="dp-label">Secondary</span><span class="dp-track"><span class="dp-ci" style="left:19.00%;width:17.33%"></span><span class="dp-dot" style="left:27.67%"></span></span><span class="dp-val">17%</span></div>
+            <div class="dp-row dp-group"><span class="dp-label">Place</span><span class="dp-track"></span><span></span></div>
+            <div class="dp-row is-hi" title="Rural: 39.3% (95% interval 33.9 to 44.7)"><span class="dp-label">Rural</span><span class="dp-track"><span class="dp-ci" style="left:56.50%;width:18.00%"></span><span class="dp-dot" style="left:65.50%"></span></span><span class="dp-val">39%</span></div>
+            <div class="dp-row" title="Urban: 18.8% (95% interval 10.8 to 26.8)"><span class="dp-label">Urban</span><span class="dp-track"><span class="dp-ci" style="left:18.00%;width:26.67%"></span><span class="dp-dot" style="left:31.33%"></span></span><span class="dp-val">19%</span></div>
+            <div class="dp-row dp-group"><span class="dp-label">Age</span><span class="dp-track"></span><span></span></div>
+            <div class="dp-row is-hi" title="15 to 24: 47.5% (95% interval 39.4 to 55.6)"><span class="dp-label">15 to 24</span><span class="dp-track"><span class="dp-ci" style="left:65.67%;width:27.00%"></span><span class="dp-dot" style="left:79.17%"></span></span><span class="dp-val">48%</span></div>
+            <div class="dp-row" title="25 to 34: 30.1% (95% interval 22.2 to 38.0)"><span class="dp-label">25 to 34</span><span class="dp-track"><span class="dp-ci" style="left:37.00%;width:26.33%"></span><span class="dp-dot" style="left:50.17%"></span></span><span class="dp-val">30%</span></div>
+            <div class="dp-row" title="35 to 49: 24.0% (95% interval 15.4 to 32.6)"><span class="dp-label">35 to 49</span><span class="dp-track"><span class="dp-ci" style="left:25.67%;width:28.67%"></span><span class="dp-dot" style="left:40.00%"></span></span><span class="dp-val">24%</span></div>
+            <div class="dp-row dp-group"><span class="dp-label">Household income</span><span class="dp-track"></span><span></span></div>
+            <div class="dp-row" title="Poorest fifth: 35.5% (95% interval 23.3 to 47.7)"><span class="dp-label">Poorest fifth</span><span class="dp-track"><span class="dp-ci" style="left:38.83%;width:40.67%"></span><span class="dp-dot" style="left:59.17%"></span></span><span class="dp-val">36%</span></div>
+            <div class="dp-row" title="Second: 37.8% (95% interval 25.9 to 49.7)"><span class="dp-label">Second</span><span class="dp-track"><span class="dp-ci" style="left:43.17%;width:39.67%"></span><span class="dp-dot" style="left:63.00%"></span></span><span class="dp-val">38%</span></div>
+            <div class="dp-row" title="Middle: 35.2% (95% interval 24.1 to 46.3)"><span class="dp-label">Middle</span><span class="dp-track"><span class="dp-ci" style="left:40.17%;width:37.00%"></span><span class="dp-dot" style="left:58.67%"></span></span><span class="dp-val">35%</span></div>
+            <div class="dp-row" title="Fourth: 34.1% (95% interval 24.3 to 43.9)"><span class="dp-label">Fourth</span><span class="dp-track"><span class="dp-ci" style="left:40.50%;width:32.67%"></span><span class="dp-dot" style="left:56.83%"></span></span><span class="dp-val">34%</span></div>
+            <div class="dp-row" title="Richest fifth: 29.8% (95% interval 21.8 to 37.8)"><span class="dp-label">Richest fifth</span><span class="dp-track"><span class="dp-ci" style="left:36.33%;width:26.67%"></span><span class="dp-dot" style="left:49.67%"></span></span><span class="dp-val">30%</span></div>
+            <div class="dp-row dp-axis"><span></span><span class="dp-track"><span style="left:0">0%</span><span style="left:33.33%">20%</span><span style="left:66.67%">40%</span><span style="left:100%">60%</span></span><span></span></div>
+            </div>
+          </a>
+          <h3><a href="data/phones-without-accounts/">Phones Without Accounts</a></h3>
+          <p class="study-kind">Insight brief and methods note, Ethiopia</p>
+          <p class="study-finding">One in five Ethiopian adults owns a phone but has no account. The gap follows schooling, place and age far more than income.</p>
+          <p class="study-part"><strong>My part:</strong> weighted 1,001 Findex responses in PostgreSQL and matched the published 48.8% account rate before going further, then designed the brief: a waffle for the headline, this dot plot, and ranked reasons.</p>
+          <p class="study-links">
+            <a href="data/phones-without-accounts/">Read the brief</a>
+            <a href="data/phones-without-accounts/brief.pdf">PDF</a>
+            <a href="data/phones-without-accounts/methods.pdf">Methods note</a>
+            <a href="data/phones-without-accounts/queries.sql">SQL</a>
+          </p>
+        </article>
+
+        <article class="study">
+          <a class="study-chart" href="data/africa-indicators/" aria-label="Open Africa Digital Finance Indicators">
+            <span class="chart-title">Account holders who made no digital payment in a year</span>
+            <div class="cols" style="--ref:21.83%">
+            <div class="cols-bars"><span class="is-hi" style="height:96.17%;--k:0" title="Ethiopia: 57.7%"></span><span style="height:62.83%;--k:1" title="Comoros: 37.7%"></span><span style="height:47.50%;--k:2" title="Mauritius: 28.5%"></span><span style="height:45.67%;--k:3" title="Gambia: 27.4%"></span><span style="height:28.83%;--k:4" title="Niger: 17.3%"></span><span style="height:28.67%;--k:5" title="South Africa: 17.2%"></span><span style="height:23.17%;--k:6" title="Nigeria: 13.9%"></span><span style="height:22.83%;--k:7" title="Chad: 13.7%"></span><span style="height:19.83%;--k:8" title="Guinea: 11.9%"></span><span style="height:18.50%;--k:9" title="Madagascar: 11.1%"></span><span style="height:17.83%;--k:10" title="Mauritania: 10.7%"></span><span style="height:13.17%;--k:11" title="Benin: 7.9%"></span><span style="height:12.67%;--k:12" title="Togo: 7.6%"></span><span style="height:12.17%;--k:13" title="Botswana: 7.3%"></span><span style="height:12.17%;--k:14" title="Namibia: 7.3%"></span><span style="height:11.83%;--k:15" title="Mozambique: 7.1%"></span><span style="height:10.00%;--k:16" title="Eswatini: 6.0%"></span><span style="height:9.67%;--k:17" title="Burkina Faso: 5.8%"></span><span style="height:9.50%;--k:18" title="Zimbabwe: 5.7%"></span><span style="height:9.17%;--k:19" title="Congo, Dem. Rep.: 5.5%"></span><span style="height:9.00%;--k:20" title="Mali: 5.4%"></span><span style="height:8.67%;--k:21" title="Lesotho: 5.2%"></span><span style="height:8.17%;--k:22" title="Sierra Leone: 4.9%"></span><span style="height:7.50%;--k:23" title="Tanzania: 4.5%"></span><span style="height:6.50%;--k:24" title="Senegal: 3.9%"></span><span style="height:6.50%;--k:25" title="Liberia: 3.9%"></span><span style="height:5.00%;--k:26" title="Uganda: 3.0%"></span><span style="height:5.00%;--k:27" title="Malawi: 3.0%"></span><span style="height:4.17%;--k:28" title="Congo, Rep.: 2.5%"></span><span style="height:4.00%;--k:29" title="Gabon: 2.4%"></span><span style="height:3.50%;--k:30" title="Zambia: 2.1%"></span><span style="height:3.33%;--k:31" title="Cameroon: 2.0%"></span><span style="height:3.17%;--k:32" title="C&ocirc;te d'Ivoire: 1.9%"></span><span style="height:1.83%;--k:33" title="Ghana: 1.1%"></span><span style="height:1.50%;--k:34" title="Kenya: 0.9%"></span></div>
+            <span class="cols-ref" aria-hidden="true"></span>
+            <span class="cols-ref-label">Region 13%</span>
+            <span class="cols-hi-label"><b>Ethiopia 58%</b>highest of 35</span>
+            </div>
+            <div class="cols-foot"><span>35 countries, highest to lowest</span><span>Kenya 0.9%</span></div>
+          </a>
+          <h3><a href="data/africa-indicators/">Africa Digital Finance Indicators</a></h3>
+          <p class="study-kind">Interactive indicator dashboard, 35 countries</p>
+          <p class="study-finding">Ethiopians open accounts but rarely use them digitally: 58% of account holders made no digital payment in a year, against 13% for the region.</p>
+          <p class="study-part"><strong>My part:</strong> defined nine indicators with a written rule and base for each, computed them for 35 countries with a population-weighted regional figure, and designed the scorecard, ranked chart and indicator dictionary.</p>
+          <p class="study-links">
+            <a href="data/africa-indicators/">Open the dashboard</a>
+            <a href="data/africa-indicators/dashboard.pdf">PDF</a>
+            <a href="data/africa-indicators/queries.sql">SQL</a>
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOFTWARE ============ -->
+  <section class="section section-band" id="software" aria-labelledby="software-heading">
+    <div class="shell">
+      <header class="section-head">
+        <h2 id="software-heading">Software I've built</h2>
+        <p>Production systems, platforms and client sites, designed and built end to end. The hotel system runs on PostgreSQL every day; the same habits carry into the data work.</p>
+      </header>
+
+      <div class="builds">
+
+        <article class="build">
+          <div class="build-shot"><img src="screenshots/01-room-dashboard.jpg" alt="Danakil Hotel RMS: room dashboard" width="1400" height="805" loading="lazy" decoding="async"></div>
+          <h3>Danakil Hotel RMS</h3>
+          <p>Hotel, restaurant and retail management system in daily use at Danakil Hotel: reservations, point of sale, inventory and reporting. Runs over the hotel network with an online replica for remote access and sync.</p>
+          <p class="build-meta">Node.js, React, PostgreSQL, Docker, Linux. Private system; screenshot from a demo instance with seeded data.</p>
+        </article>
+
+        <article class="build">
+          <div class="build-shot"><img src="screenshots/warka-1.jpg" alt="Warka: fleet and stock overview" width="1000" height="625" loading="lazy" decoding="async"></div>
+          <h3>Warka</h3>
+          <p>A platform for planning and managing off-grid solar systems in Ethiopia. Pre-pilot.</p>
+          <p class="build-meta">Node.js, React, PostgreSQL, Docker. <a href="https://warka-paygo-qf8j.onrender.com/" rel="noopener">Open the demo</a> (seeded data).</p>
+        </article>
+
+        <article class="build">
+          <div class="build-shot"><img src="screenshots/sileenat-1.jpg" alt="Sile Enat: home page" width="1000" height="625" loading="lazy" decoding="async"></div>
+          <h3>Sile Enat</h3>
+          <p>A private space for mothers with postpartum depression to track symptoms and find support. 2nd place, ALX Ethiopia &amp; Kuriftu Wellness Hackathon.</p>
+          <p class="build-meta">React, Node.js, PostgreSQL, AI-assisted check-ins. <a href="https://sileinat.org/" rel="noopener">sileinat.org</a></p>
+        </article>
+
+        <article class="build">
+          <div class="build-shot"><img src="screenshots/haile-1.jpg" alt="Haile &amp; Partners Legal: home page" width="1000" height="625" loading="lazy" decoding="async"></div>
+          <h3>Haile &amp; Partners Legal</h3>
+          <p>Spec site for a fictional Ethiopian law firm.</p>
+          <p class="build-meta">HTML, CSS, JavaScript. <a href="https://lawfirmprototype.netlify.app/" rel="noopener">lawfirmprototype.netlify.app</a></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about" aria-labelledby="about-heading">
+    <div class="shell">
+    <h2 class="about-title" id="about-heading">About</h2>
+    <div class="about">
+      <!-- Profile card: who, what, and the facts a recruiter checks. On wide
+           screens it sits beside the story and stays in view while it scrolls. -->
+      <aside class="profile" aria-label="Profile">
+        <div class="profile-id">
+          <img class="portrait" src="images/portrait.jpg" alt="Dawit Sileshi" width="640" height="640" loading="lazy" decoding="async">
+          <div>
+            <p class="profile-name">Dawit Sileshi</p>
+            <p class="profile-title">Data analyst and visual designer</p>
+          </div>
+        </div>
+        <dl class="profile-facts">
+          <div><dt>Based in</dt><dd>Addis Ababa, Ethiopia</dd></div>
+          <div><dt>Education</dt><dd>BSc Software Engineering, Mekelle University, 2019<span class="fact-sub">GPA 3.46 out of 4</span></dd></div>
+          <div><dt>Languages</dt><dd>Amharic, native<span class="fact-sub">English, professional</span></dd></div>
+        </dl>
+        <a class="btn btn-quiet profile-cv" href="Dawit_Sileshi_CV.pdf">Download CV (PDF)</a>
+      </aside>
+
+      <div class="about-body">
+        <p class="about-intro">I trained as a software engineer and spent years in graphic, print and motion design: advertising work, health-education posters for Tikur Anbessa Hospital, and teaching graphic design and advanced Excel to adult learners. My work now sits where those meet: finding what a dataset actually says, and designing the chart that says it clearly.</p>
+
+        <div class="skills">
+          <div>
+            <h3>Analysis</h3>
+            <ul>
+              <li>SQL and PostgreSQL</li>
+              <li>Survey weighting and margins</li>
+              <li>Excel, advanced</li>
+              <li>PostGIS, Google Earth Engine</li>
+              <li>Python, learning</li>
             </ul>
-            <p class="shots-note">Screenshots from a demo instance. All guest, payment and revenue data shown is seeded.</p>
           </div>
-          <div class="project-rail">
-            <p class="project-stack">Node.js, React, PostgreSQL, Docker, Linux</p>
-            <p class="project-meta">No live link</p>
-          </div>
-        </li>
-
-        <li class="project reveal">
-          <span class="project-index">02</span>
-          <div class="project-main">
-            <h3 class="project-title">Warka</h3>
-            <p class="project-body">Building a platform for planning and managing off-grid solar systems in Ethiopia. Pre-pilot.</p>
-            <ul class="shots shots-pair">
-              <li><img src="screenshots/warka-1.jpg" alt="Warka: fleet and stock overview" width="1000" height="625" loading="lazy" decoding="async"></li>
-              <li><img src="screenshots/warka-2.jpg" alt="Warka: live payment-to-power demo" width="1000" height="625" loading="lazy" decoding="async"></li>
-            </ul>
-            <p class="shots-note">Screenshots from the public demo instance. All customer and payment data shown is seeded.</p>
-          </div>
-          <div class="project-rail">
-            <p class="project-stack">Node.js, React, PostgreSQL, Docker</p>
-            <p class="project-meta"><a href="https://warka-paygo-qf8j.onrender.com/" rel="noopener">warka-paygo-qf8j.onrender.com</a></p>
-          </div>
-        </li>
-
-        <li class="project reveal">
-          <span class="project-index">03</span>
-          <div class="project-main">
-            <h3 class="project-title">Sile Enat</h3>
-            <p class="project-body">Digital health project supporting mothers experiencing postpartum depression: a private space for symptom tracking and support. 2nd place, ALX Ethiopia &amp; Kuriftu Wellness Hackathon.</p>
-            <ul class="shots shots-pair">
-              <li><img src="screenshots/sileenat-1.jpg" alt="Sile Enat: home page" width="1000" height="625" loading="lazy" decoding="async"></li>
-              <li><img src="screenshots/sileenat-2.jpg" alt="Sile Enat: support features" width="960" height="600" loading="lazy" decoding="async"></li>
+          <div>
+            <h3>Design</h3>
+            <ul>
+              <li>Charts, briefs and dashboards</li>
+              <li>Adobe Photoshop, with scripting</li>
+              <li>Adobe After Effects</li>
+              <li>Print production and layout</li>
             </ul>
           </div>
-          <div class="project-rail">
-            <p class="project-stack">React, Node.js, PostgreSQL, with AI-assisted check-ins</p>
-            <p class="project-meta"><a href="https://sileinat.org/" rel="noopener">sileinat.org</a></p>
-          </div>
-        </li>
-
-        <li class="project reveal">
-          <span class="project-index">04</span>
-          <div class="project-main">
-            <h3 class="project-title">Haile &amp; Partners Legal</h3>
-            <p class="project-body">Spec project: demonstration site for a fictional Ethiopian law firm.</p>
-            <ul class="shots shots-pair">
-              <li><img src="screenshots/haile-1.jpg" alt="Haile &amp; Partners Legal: home page" width="1000" height="625" loading="lazy" decoding="async"></li>
-              <li><img src="screenshots/haile-2.jpg" alt="Haile &amp; Partners Legal: practice areas" width="1000" height="625" loading="lazy" decoding="async"></li>
+          <div>
+            <h3>Build</h3>
+            <ul>
+              <li>HTML, CSS, JavaScript</li>
+              <li>React, Node.js, FastAPI</li>
+              <li>Ubuntu server deployment</li>
             </ul>
           </div>
-          <div class="project-rail">
-            <p class="project-stack">Vanilla HTML, CSS, JS</p>
-            <p class="project-meta"><a href="https://lawfirmprototype.netlify.app/" rel="noopener">lawfirmprototype.netlify.app</a></p>
-          </div>
+        </div>
+
+        <p class="ai-note"><strong>How I use AI.</strong> I use Claude and ChatGPT every day for query drafts, chart code and copy. I recompute every figure in SQL and check it against a published value before it goes into a chart, and I publish the SQL with each project so anyone can check it.</p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section section-band contact" id="contact" aria-labelledby="contact-heading">
+    <div class="shell">
+      <header class="section-head">
+        <h2 id="contact-heading">Contact</h2>
+        <p>The quickest way to reach me is email. Open to full-time roles and project work.</p>
+      </header>
+
+      <div class="email-row">
+        <a class="contact-email" href="mailto:dawitsileshi45@gmail.com">dawitsileshi45@gmail.com</a>
+        <button class="copy-btn" id="copy-email" type="button" data-copy="dawitsileshi45@gmail.com" hidden>Copy email</button>
+      </div>
+
+      <ul class="contact-cards">
+        <li>
+          <a class="contact-card" href="tel:+251932151071">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span class="cc-label">Phone</span>
+            <span class="cc-value">+251 932 151 071</span>
+          </a>
         </li>
+        <li>
+          <a class="contact-card" href="https://www.linkedin.com/in/dawit-sileshi/" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5"/><path d="M8 10.5V17M12 17v-6.5M12 13.5a2.5 2.5 0 0 1 5 0V17"/><circle cx="8" cy="7.3" r=".6" class="dot"/></svg>
+            <span class="cc-label">LinkedIn</span>
+            <span class="cc-value">dawit-sileshi</span>
+          </a>
+        </li>
+        <li>
+          <a class="contact-card" href="https://github.com/dawitsileshi" rel="noopener">
+            <svg viewBox="0 0 16 16" aria-hidden="true" class="filled"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span class="cc-label">GitHub</span>
+            <span class="cc-value">dawitsileshi</span>
+          </a>
+        </li>
+        <li>
+          <a class="contact-card" href="Dawit_Sileshi_CV.pdf">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span class="cc-label">CV</span>
+            <span class="cc-value">Download PDF</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-      </ol>
-    </section>
+</main>
 
-    <section class="section reveal" aria-labelledby="contact-heading">
-      <h2 class="section-heading" id="contact-heading">Contact</h2>
-      <address class="contact">
-        <p><span class="contact-label">Email</span> <a href="mailto:dawitsileshi45@gmail.com">dawitsileshi45@gmail.com</a></p>
-        <p><span class="contact-label">Phone</span> <a href="tel:+251932151071">+251 932 151 071</a></p>
-        <p><span class="contact-label">LinkedIn</span> <a href="https://www.linkedin.com/in/dawit-sileshi/" rel="noopener">linkedin.com/in/dawit-sileshi</a></p>
-        <p><span class="contact-label">GitHub</span> <a href="https://github.com/dawitsileshi" rel="noopener">github.com/dawitsileshi</a></p>
-      </address>
-    </section>
-
-  </main>
-
-  <footer class="colophon">
-    <p>Dawit Sileshi</p>
-  </footer>
-
-</div>
+<footer class="shell site-foot">
+  <p>Dawit Sileshi, Addis Ababa</p>
+  <p><a href="#top">Back to top</a></p>
+</footer>
 
 <script>
-/* Theme toggle + fade-in on scroll. Inline so it always ships with the page. */
+/* Theme toggle, and the hero chart: point at or tab to a legend row to
+   isolate that group and read what it means. Inline so it always ships. */
 (function () {
   "use strict";
 
   /* ---- theme ---- */
   var root = document.documentElement;
   var btn = document.getElementById("theme-toggle");
-  var nameEl = document.getElementById("theme-name");
   var meta = document.querySelector('meta[name="theme-color"]');
 
   function paint(theme) {
     root.setAttribute("data-theme", theme);
-    nameEl.textContent = theme === "dark" ? "Dark" : "Light";
-    btn.setAttribute("aria-label",
-      "Switch to " + (theme === "dark" ? "light" : "dark") + " theme");
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#0c0e11" : "#f7f6f4");
+    btn.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+    btn.setAttribute("aria-label", "Switch to " + (theme === "dark" ? "light" : "dark") + " theme");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#10141c" : "#ffffff");
   }
-
-  paint(root.getAttribute("data-theme") || "dark");
-
+  paint(root.getAttribute("data-theme") || "light");
   btn.addEventListener("click", function () {
     var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     paint(next);
     try { localStorage.setItem("theme", next); } catch (e) {}
   });
 
-  /* ---- reveal ---- */
-  var items = [].slice.call(document.querySelectorAll(".reveal"));
-  if (!items.length) return;
+  /* ---- hero waffle ---- */
+  var waffle = document.getElementById("waffle");
+  var read = document.getElementById("waffle-read");
+  var buttons = [].slice.call(document.querySelectorAll(".legend button"));
+  if (!waffle || !read) return;
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    items.forEach(function (el) { el.classList.add("is-visible"); });
-    return;
+  var text = {
+    both: "38 in every 100 adults have both a phone and an account.",
+    hi:   "20 in every 100 adults, about 15 million people, already carry a phone but have no account. Most of their phones can't run an app.",
+    acct: "11 in every 100 adults have an account but no phone of their own.",
+    none: "31 in every 100 adults have neither. For them the barrier starts with the device."
+  };
+
+  function show(g) {
+    waffle.setAttribute("data-active", g);
+    read.textContent = text[g];
+    buttons.forEach(function (b) { b.classList.toggle("is-on", b.getAttribute("data-g") === g); });
+  }
+  function reset() {
+    waffle.removeAttribute("data-active");
+    read.textContent = text.hi;
+    buttons.forEach(function (b) { b.classList.remove("is-on"); });
   }
 
-  var ticking = false;
+  buttons.forEach(function (b) {
+    var g = b.getAttribute("data-g");
+    b.addEventListener("pointerenter", function () { show(g); });
+    b.addEventListener("focus", function () { show(g); });
+    b.addEventListener("click", function () { show(g); });
+    b.addEventListener("pointerleave", function () { if (document.activeElement !== b) reset(); });
+    b.addEventListener("blur", reset);
+  });
+})();
 
-  function check() {
-    ticking = false;
-    var limit = window.innerHeight * 0.92;
-    for (var i = items.length - 1; i >= 0; i--) {
-      if (items[i].getBoundingClientRect().top < limit) {
-        items[i].classList.add("is-visible");
-        items.splice(i, 1);
-      }
-    }
-    if (!items.length) {
-      window.removeEventListener("scroll", request);
-      window.removeEventListener("resize", request);
-    }
+/* Pinned header: a hairline appears once the page has scrolled, and the nav
+   marks the section currently in view. Copy-email button. */
+(function () {
+  "use strict";
+
+  var header = document.querySelector(".site-header");
+  var links = [].slice.call(document.querySelectorAll(".site-nav a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  /* Current section = the last one whose top has passed 40% of the way down
+     the screen. Above the first section (the hero), nothing is marked.
+     Four rect reads per scroll event is cheap, so no frame throttling. */
+  function update() {
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+    var line = window.innerHeight * 0.4;
+    var current = -1;
+    sections.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= line) current = i; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = sections.length - 1;
+    links.forEach(function (a, i) {
+      if (i === current) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
   }
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 
-  function request() {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(check);
+  var copy = document.getElementById("copy-email");
+  if (copy && navigator.clipboard && window.isSecureContext) {
+    copy.hidden = false;
+    copy.addEventListener("click", function () {
+      navigator.clipboard.writeText(copy.getAttribute("data-copy")).then(function () {
+        copy.textContent = "Copied";
+        copy.classList.add("is-done");
+        setTimeout(function () { copy.textContent = "Copy email"; copy.classList.remove("is-done"); }, 1800);
+      });
+    });
   }
-
-  window.addEventListener("scroll", request, { passive: true });
-  window.addEventListener("resize", request);
-  check();
 })();
 </script>
 </body>

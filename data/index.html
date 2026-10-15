@@ -2,90 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Data &amp; Visual Work · Dawit Sileshi</title>
-<meta name="description" content="Data analysis and visual design projects by Dawit Sileshi: financial inclusion in Ethiopia and digital finance indicators across Africa.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap">
-<style>
-/* Layout: short intro, then one card per project in reading order, then how the work was made */
-:root{--bg:#FAFAF9;--panel:#F0F1F3;--ink:#1B1F24;--ink2:#3A414B;--muted:#5D6570;--rule:#E1E4E8;--hi:#C2410C;--link:#2F64B0;
---sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#14171B;--panel:#1D2126;--ink:#ECEEF1;--ink2:#C6CBD2;--muted:#98A0AB;--rule:#2D3239;--hi:#F07A42;--link:#8FB4E8;color-scheme:dark}}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:20px;padding-block:32px 64px}
-.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
-a{color:var(--link)}
-a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
-.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--hi);font-weight:700}
-h1{font-size:clamp(28px,5vw,38px);line-height:1.12;margin-top:6px;text-wrap:balance}
-.lede{font-size:17.5px;color:var(--ink2);margin-top:12px;max-width:62ch}
-.back{font-size:13px;color:var(--muted)}
-.list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule)}
-.item{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:24px 0;border-bottom:1px solid var(--rule)}
-.num{font-size:26px;font-weight:700;color:var(--hi);line-height:1.1;font-variant-numeric:tabular-nums}
-.item h2{font-size:21px;line-height:1.25;text-wrap:balance}
-.item h2 a{color:var(--ink);text-decoration:none}
-.item h2 a:hover{text-decoration:underline}
-.finding{font-size:16px;color:var(--ink);margin-top:6px;max-width:62ch}
-.finding b{color:var(--hi)}
-dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;margin-top:12px;font-size:14px;color:var(--ink2)}
-dt{color:var(--muted)}
-.links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:14px;font-weight:600}
-.how{background:var(--panel);border-radius:6px;padding:16px 18px;font-size:14.5px;color:var(--ink2);display:flex;flex-direction:column;gap:8px}
-.how h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
-footer{font-size:12.5px;color:var(--muted)}
-@media (max-width:480px){.item{grid-template-columns:1fr;gap:6px}}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data &amp; visual work · Dawit Sileshi</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://dawitsileshi.netlify.app/#data">
+<meta http-equiv="refresh" content="0; url=/#data">
 </head>
 <body>
-<div class="wrap">
-<header>
-  <a class="back" href="/">← Dawit Sileshi</a>
-  <div class="kicker" style="margin-top:18px">Data &amp; visual work</div>
-  <h1>Analysis and design on Ethiopia's digital economy</h1>
-  <p class="lede">Independent analysis projects on financial inclusion and digital payments. Each one comes with the SQL that reproduces every figure.</p>
-</header>
-
-<div class="list">
-
-  <article class="item">
-    <div class="num">01</div>
-    <div>
-      <h2><a href="phones-without-accounts/">Phones Without Accounts</a></h2>
-      <p class="finding"><b>One in five</b> Ethiopian adults owns a mobile phone but has no account, and most of those phones are basic phones that can't run an app.</p>
-      <dl>
-        <dt>Data</dt><dd>World Bank Global Findex 2025 microdata, 1,001 Ethiopian adults, survey-weighted</dd>
-        <dt>Form</dt><dd>Two-page insight brief with a methods note</dd>
-        <dt>Tools</dt><dd>PostgreSQL, Python</dd>
-      </dl>
-      <div class="links"><a href="phones-without-accounts/">Read the brief</a><a href="phones-without-accounts/brief.pdf">PDF</a><a href="phones-without-accounts/methods.pdf">Methods note</a><a href="phones-without-accounts/queries.sql">SQL</a></div>
-    </div>
-  </article>
-
-  <article class="item">
-    <div class="num">02</div>
-    <div>
-      <h2><a href="africa-indicators/">Africa Digital Finance Indicators</a></h2>
-      <p class="finding"><b>58%</b> of Ethiopian account holders made no digital payment in a year, the highest of 35 African countries. The regional figure is 13%.</p>
-      <dl>
-        <dt>Data</dt><dd>Global Findex 2025, 35 countries, about 35,000 adults</dd>
-        <dt>Form</dt><dd>Interactive dashboard with a scorecard, ranked comparison, table view and indicator dictionary</dd>
-        <dt>Tools</dt><dd>PostgreSQL, HTML/JavaScript</dd>
-      </dl>
-      <div class="links"><a href="africa-indicators/">Open the dashboard</a><a href="africa-indicators/dashboard.pdf">PDF</a><a href="africa-indicators/queries.sql">SQL</a></div>
-    </div>
-  </article>
-
-
-</div>
-
-<section class="how" aria-labelledby="how-h">
-  <h3 id="how-h">How this work was made</h3>
-  <p>I loaded the survey data into PostgreSQL and checked the weighting against published figures before any analysis. Ethiopia's weighted figures match the World Bank's published values (48.8% account ownership, 9.5% mobile money, 20.7% digital payments).</p>
-  <p>I worked with an AI assistant (Claude) on the analysis plan, queries, chart code and copy, and reran every figure in SQL myself. The SQL files on this page reproduce them.</p>
-</section>
-
-<footer>Data: World Bank, Global Findex Database 2025 (doi.org/10.48529/bk9n-8r43). Independent analysis, not affiliated with the World Bank or any company named in the data.</footer>
-</div>
+<p>This work now lives on the <a href="/#data">home page</a>.</p>
 </body>
 </html>
