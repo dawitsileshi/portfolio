@@ -631,6 +631,43 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--ink-3);
 }
 
+/* ---------- wide study: the social carousel ----------
+   Spans both columns: a strip of real slides, then the text in two columns. */
+
+/* Grid items default to their content width; let the strip scroll instead. */
+.studies > *,
+.study-wide .strip { min-width: 0; }
+.study-wide .strip { gap: 0; }
+.strip-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(130px, 1fr);
+  gap: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.strip-row::-webkit-scrollbar { display: none; }
+.strip-row img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--rule);
+  background: var(--paper);
+}
+.wide-text { display: grid; gap: 0 2.5rem; }
+.wide-text .study-finding { margin-top: 1rem; }
+
+@media (min-width: 52em) {
+  .studies > .study-wide {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    display: block;
+  }
+  .wide-text { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .wide-text .study-finding { margin-top: 1.6rem; }
+}
+
 /* ---------- how the data work was made + review log ----------
    Closes the data section. Same five/six split as the section heads, so the
    method sits under the heading and the log under the lede. */
@@ -914,9 +951,15 @@ a:hover { text-decoration-thickness: 2px; }
   grid-template-columns: 1fr;
   gap: 0.85rem;
 }
-/* 1, 2 or 4 across, never an orphan on its own row */
-@media (min-width: 30em) { .contact-cards { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 64em) { .contact-cards { grid-template-columns: repeat(4, 1fr); } }
+/* 1, 2 or 5 across; on two columns an odd last card spans the row */
+@media (min-width: 30em) {
+  .contact-cards { grid-template-columns: repeat(2, 1fr); }
+  .contact-cards li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (min-width: 64em) {
+  .contact-cards { grid-template-columns: repeat(5, 1fr); }
+  .contact-cards li:last-child:nth-child(odd) { grid-column: auto; }
+}
 
 .contact-card {
   display: grid;

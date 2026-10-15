@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phones Without Accounts: social carousel · Dawit Sileshi</title>
+<meta name="description" content="A seven-slide social carousel in English and Amharic, built in Figma from the Phones Without Accounts brief.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@500&display=swap">
+<link rel="stylesheet" href="/styles.css">
+<script>
+(function () {
+  var t = "light";
+  try {
+    t = localStorage.getItem("theme")
+      || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  } catch (e) {}
+  document.documentElement.setAttribute("data-theme", t);
+  document.documentElement.className = "js";
+})();
+</script>
+<style>
+/* Page-specific layout. Tokens, header, buttons and type come from /styles.css. */
+.page-intro { padding-top: clamp(2rem, 5vw, 3.5rem); }
+.back { font-size: 0.9375rem; color: var(--ink-2); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.page-intro h1 {
+  margin-top: 1.25rem;
+  font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+}
+.lede { margin: 1.25rem 0 0; max-width: 38em; font-size: 1.1875rem; line-height: 1.55; color: var(--ink-2); }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem 2rem;
+  margin: 2rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.facts dt { font-size: 0.8125rem; color: var(--ink-3); }
+.facts dd { margin: 0.2rem 0 0; font-size: 0.9688rem; line-height: 1.5; }
+
+/* gallery */
+.gallery-section { margin-top: clamp(2.5rem, 6vw, 4rem); }
+.gallery-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.lang { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--paper-2); }
+.lang button {
+  font: inherit; font-size: 0.9375rem; font-weight: 600;
+  padding: 0.45rem 1.1rem; border: 0; border-radius: 999px;
+  background: none; color: var(--ink-2); cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--paper); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.lang .am { font-family: var(--ethiopic); }
+.nav-btns { display: flex; gap: 0.5rem; }
+.nav-btns button {
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 0; box-shadow: inset 0 0 0 1px var(--rule);
+  background: var(--paper); color: var(--ink); font-size: 1.1rem; cursor: pointer;
+}
+.nav-btns button:hover { box-shadow: inset 0 0 0 1px var(--ink-3); }
+
+.track {
+  display: flex;
+  gap: 1rem;
+  margin: 1.25rem calc(var(--gutter) * -1) 0;
+  padding: 0.25rem var(--gutter) 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: thin;
+}
+.track[hidden] { display: none; }
+.slide { flex: none; width: clamp(240px, 30vw, 340px); margin: 0; scroll-snap-align: start; }
+.slide a { display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule); }
+.slide img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; background: var(--paper-2); }
+.slide figcaption { margin-top: 0.5rem; font-size: 0.8125rem; color: var(--ink-3); }
+.hint { margin: 0; font-size: 0.875rem; color: var(--ink-3); }
+
+/* process */
+.process { margin-top: clamp(3.5rem, 8vw, 5.5rem); display: grid; gap: 2.5rem; }
+.process h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); line-height: 1.08; letter-spacing: -0.025em; }
+.process-text p { margin: 0 0 1.1rem; max-width: 36em; color: var(--ink-2); }
+.process-text p strong { color: var(--ink); font-weight: 600; }
+.process-text p [lang="am"] { font-family: var(--ethiopic); color: var(--ink); }
+.shot { margin: 0; align-self: start; }
+.shot img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px var(--rule); }
+.shot figcaption { margin-top: 0.6rem; font-size: 0.8125rem; color: var(--ink-3); }
+
+@media (min-width: 64em) {
+  .process { grid-template-columns: minmax(0, 5fr) minmax(0, 6.2fr); column-gap: var(--split-gap); }
+  .process h2 { grid-column: 1 / -1; }
+}
+.page-end { margin-top: clamp(3rem, 7vw, 5rem); padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="shell site-head">
+    <a class="brand" href="/">Dawit Sileshi <span class="brand-am" lang="am">ዳዊት ስለሺ</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="/#data" aria-current="true">Data work</a>
+      <a href="/#software">Software</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
+  </div>
+</header>
+
+<main id="main" class="shell">
+
+  <section class="page-intro" aria-labelledby="title">
+    <a class="back" href="/#data">← All work</a>
+    <h1 id="title">Phones Without Accounts: social carousel</h1>
+    <p class="lede">Seven slides that take my insight brief from a two-page PDF to a phone screen, with its caveats intact, in English and Amharic.</p>
+    <dl class="facts">
+      <div><dt>Format</dt><dd>7 slides, 1080 × 1350 px, for Instagram, Facebook and LinkedIn</dd></div>
+      <div><dt>Languages</dt><dd>English and Amharic, each a full set</dd></div>
+      <div><dt>Built in</dt><dd>Figma</dd></div>
+      <div><dt>Data</dt><dd>World Bank Global Findex 2025 microdata, surveyed areas only. <a href="/data/phones-without-accounts/">Read the brief</a></dd></div>
+    </dl>
+  </section>
+
+  <section class="gallery-section" aria-label="Slides">
+    <div class="gallery-bar">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" data-lang="am" aria-pressed="false" class="am" lang="am">አማርኛ</button>
+      </div>
+      <div class="nav-btns">
+        <button type="button" data-dir="-1" aria-label="Previous slides">‹</button>
+        <button type="button" data-dir="1" aria-label="Next slides">›</button>
+      </div>
+    </div>
+
+    <div class="track" id="track-en" tabindex="0" aria-label="English slides">
+      <figure class="slide"><a href="slides/en-1.png"><img src="slides/en-1.png" width="1080" height="1350" alt="Cover: 1 in 5 adults in Ethiopia's Findex survey carries a phone but has no account. A 10 by 10 grid with 20 squares highlighted."></a><figcaption>1 / 7 · Cover</figcaption></figure>
+      <figure class="slide"><a href="slides/en-2.png"><img src="slides/en-2.png" width="1080" height="1350" loading="lazy" alt="Of every 100 adults surveyed: 38 have a phone and an account, 20 have a phone but no account, 11 have an account but no phone, 31 have neither."></a><figcaption>2 / 7 · The 100 adults</figcaption></figure>
+      <figure class="slide"><a href="slides/en-3.png"><img src="slides/en-3.png" width="1080" height="1350" loading="lazy" alt="Most of their phones can't run an app: 84% carry a basic phone, against 65% of phone owners who have an account; 13% used the internet in the past three months."></a><figcaption>3 / 7 · Their phones</figcaption></figure>
+      <figure class="slide"><a href="slides/en-4.png"><img src="slides/en-4.png" width="1080" height="1350" loading="lazy" alt="Share of phone owners with no account: primary schooling or less 42%, secondary 17%, rural 39%, urban 19%, poorest fifth 36%, richest fifth 30%, with 95% intervals. Income shows no clear pattern."></a><figcaption>4 / 7 · Who has no account</figcaption></figure>
+      <figure class="slide"><a href="slides/en-5.png"><img src="slides/en-5.png" width="1080" height="1350" loading="lazy" alt="Reasons for having no account: not enough money 82%, too far away 33%, lack documents 20%, a family member has one 20%, too expensive 18%, don't trust financial institutions 10%."></a><figcaption>5 / 7 · Why</figcaption></figure>
+      <figure class="slide"><a href="slides/en-6.png"><img src="slides/en-6.png" width="1080" height="1350" loading="lazy" alt="What to test next: basic-phone onboarding, what 'not enough money' means, and who to reach."></a><figcaption>6 / 7 · What to test next</figcaption></figure>
+      <figure class="slide"><a href="slides/en-7.png"><img src="slides/en-7.png" width="1080" height="1350" loading="lazy" alt="About the data: Findex 2025 microdata, 1,001 adults interviewed October to November 2024; Amhara, Tigray, Somali and Harari were excluded, about 30% of the population."></a><figcaption>7 / 7 · About the data</figcaption></figure>
+    </div>
+
+    <div class="track" id="track-am" tabindex="0" aria-label="Amharic slides" hidden>
+      <figure class="slide"><a href="slides/am-1.png"><img src="slides/am-1.png" width="1080" height="1350" loading="lazy" alt="Amharic cover: one in five adults in Ethiopia's Findex survey has a phone but no account."></a><figcaption>1 / 7</figcaption></figure>
+      <figure class="slide"><a href="slides/am-2.png"><img src="slides/am-2.png" width="1080" height="1350" loading="lazy" alt="Amharic slide 2: of every 100 adults surveyed, 38, 20, 11 and 31."></a><figcaption>2 / 7</figcaption></figure>
+      <figure class="slide"><a href="slides/am-3.png"><img src="slides/am-3.png" width="1080" height="1350" loading="lazy" alt="Amharic slide 3: 84% carry a basic phone, against 65%; 13% used the internet."></a><figcaption>3 / 7</figcaption></figure>
+      <figure class="slide"><a href="slides/am-4.png"><img src="slides/am-4.png" width="1080" height="1350" loading="lazy" alt="Amharic slide 4: share of phone owners with no account by schooling, place and income, with 95% intervals."></a><figcaption>4 / 7</figcaption></figure>
+      <figure class="slide"><a href="slides/am-5.png"><img src="slides/am-5.png" width="1080" height="1350" loading="lazy" alt="Amharic slide 5: reasons for having no account, led by not enough money at 82%."></a><figcaption>5 / 7</figcaption></figure>
+      <figure class="slide"><a href="slides/am-6.png"><img src="slides/am-6.png" width="1080" height="1350" loading="lazy" alt="Amharic slide 6: what to test next."></a><figcaption>6 / 7</figcaption></figure>
+      <figure class="slide"><a href="slides/am-7.png"><img src="slides/am-7.png" width="1080" height="1350" loading="lazy" alt="Amharic slide 7: about the data, including the survey's coverage."></a><figcaption>7 / 7</figcaption></figure>
+    </div>
+    <p class="hint">Scroll sideways, or open a slide for the full-size image.</p>
+  </section>
+
+  <section class="process" aria-labelledby="process-h">
+    <h2 id="process-h">How it was made</h2>
+    <div class="process-text">
+      <p><strong>Why a carousel.</strong> The brief is a two-page PDF: right for a partner meeting, wrong for a phone. I wanted the same finding, with its caveats, in the format most people would actually see it: a swipeable post, in Amharic as well as English.</p>
+      <p><strong>Starting point.</strong> The layout began as a reference mockup I generated with an AI assistant (Claude) from the brief's verified figures, with an exact position for every bar and dot. I built all fourteen slides in Figma from that reference.</p>
+      <p><strong>The Amharic version.</strong> I wrote it rather than translating line by line. The hardest word was "interval": the usual term, <span lang="am">ክልል</span>, also means "region", and the same slides name the regions the survey left out. I used <span lang="am">የስህተት ህዳግ</span> ("margin of error") instead. Ethiopic headlines also run longer, four lines where English needs three, so the Amharic slides needed their own line breaks.</p>
+      <p><strong>Checking the export.</strong> After exporting, every bar and dot was measured against the verified figures with a script (AI-assisted). The check caught marks drawn off-scale and a caveat that said the opposite of the brief, and I corrected them before publishing.</p>
+      <p><strong>Scope.</strong> Findex 2025 did not interview in Amhara, Tigray, Somali or Harari, about 30% of the population, so every slide says "adults surveyed", never "Ethiopian adults".</p>
+      <p><strong>Next.</strong> Show it to a few people on their phones before posting, and make an A4 print version for meetings.</p>
+    </div>
+    <figure class="shot">
+      <a href="figma-workspace.png"><img src="figma-workspace.png" width="1378" height="994" loading="lazy" alt="The Figma file with all fourteen frames: the English slides on the left, the Amharic slides on the right."></a>
+      <figcaption>The Figma file: English slides on the left, Amharic on the right.</figcaption>
+    </figure>
+  </section>
+
+  <p class="page-end"><a class="back" href="/#data">← Back to all work</a></p>
+</main>
+
+<footer class="shell site-foot">
+  <p>Dawit Sileshi, Addis Ababa</p>
+  <p><a href="#top">Back to top</a></p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* theme */
+  var root = document.documentElement, btn = document.getElementById("theme-toggle");
+  var meta = document.querySelector('meta[name="theme-color"]');
+  function paint(t) {
+    root.setAttribute("data-theme", t);
+    btn.textContent = t === "dark" ? "Light mode" : "Dark mode";
+    btn.setAttribute("aria-label", "Switch to " + (t === "dark" ? "light" : "dark") + " theme");
+    if (meta) meta.setAttribute("content", t === "dark" ? "#10141c" : "#ffffff");
+  }
+  paint(root.getAttribute("data-theme") || "light");
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    paint(next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  /* header hairline once scrolled */
+  var header = document.querySelector(".site-header");
+  function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 8); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* language switch and previous / next */
+  var tracks = { en: document.getElementById("track-en"), am: document.getElementById("track-am") };
+  var langBtns = [].slice.call(document.querySelectorAll(".lang button"));
+  var current = "en";
+  langBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      current = b.getAttribute("data-lang");
+      langBtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      tracks.en.hidden = current !== "en";
+      tracks.am.hidden = current !== "am";
+      tracks[current].scrollLeft = 0;
+    });
+  });
+  [].slice.call(document.querySelectorAll(".nav-btns button")).forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = tracks[current], step = t.querySelector(".slide").offsetWidth + 16;
+      t.scrollBy({ left: step * Number(b.getAttribute("data-dir")), behavior: "smooth" });
+    });
+  });
+})();
+</script>
+</body>
+</html>
