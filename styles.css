@@ -631,6 +631,80 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--ink-3);
 }
 
+/* ---------- how the data work was made + review log ----------
+   Closes the data section. Same five/six split as the section heads, so the
+   method sits under the heading and the log under the lede. */
+
+.checks {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: clamp(4rem, 8vw, 5.5rem);
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--rule);
+}
+
+.checks h3 {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.checks-how p {
+  margin: 0.9rem 0 0;
+  max-width: 34em;
+  font-size: 0.9688rem;
+  color: var(--ink-2);
+}
+
+.log {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.log li {
+  position: relative;
+  padding: 0 0 1.35rem 1.4rem;
+  border-left: 2px solid var(--rule);
+}
+.log li:last-of-type { padding-bottom: 0.25rem; }
+.log li::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 0.45rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--paper);
+}
+
+.log p {
+  margin: 0;
+  font-size: 0.9688rem;
+  color: var(--ink-2);
+}
+.log .log-meta {
+  margin-bottom: 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.checks-source {
+  margin: 1.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ink-3);
+}
+
+@media (min-width: 64em) {
+  .checks {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6.2fr);
+    column-gap: var(--split-gap);
+  }
+}
+
 /* ---------- software ---------- */
 
 .builds {

@@ -111,6 +111,16 @@ code{font-family:var(--mono);font-size:12.5px;background:var(--panel);padding:1p
 tr.eth td{color:var(--eth);font-weight:600}
 .method{font-size:13.5px;color:var(--ink2);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px}
 .method p{min-width:0}
+
+.qad{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 22px;background:var(--panel,#F0F1F3);border-radius:6px;padding:14px 16px;font-size:14px;color:var(--ink2,#3A414B)}
+.qad div{min-width:0}.qad b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink,#1B1F24);margin-bottom:2px}
+.facts{border-top:1px solid var(--rule,#E1E4E8);margin-top:4px}
+.facts summary{cursor:pointer;font-size:13.5px;font-weight:600;padding:10px 0;color:var(--ink,#1B1F24)}
+.facts summary:focus-visible{outline:2px solid var(--blue,#2F64B0);outline-offset:2px}
+.facts dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:5px 16px;font-size:13.5px;color:var(--ink2,#3A414B);padding-bottom:12px}
+.facts dt{color:var(--muted,#5D6570)}
+@media (max-width:520px){.facts dl{grid-template-columns:1fr}.facts dt{margin-top:6px}}
+
 footer{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:10px}
 
 @media (max-width:560px){
@@ -126,27 +136,29 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);paddin
 <div class="wrap">
 <header>
   <div class="kicker">Indicator dashboard · Digital finance · Sub-Saharan Africa</div>
-  <h1>Ethiopians open accounts. They rarely use them digitally.</h1>
-  <p class="lede">Nine indicators of access and digital use for 35 countries, from the World Bank's 2025 Global Findex survey. Ethiopia is below the regional figure on account ownership, and near the bottom on almost every measure of digital use.</p>
+  <h1>In Ethiopia's sample, accounts are common. Using them digitally is not.</h1>
+  <p class="lede">Nine indicators of access and digital use for 35 countries, from the World Bank's 2025 Global Findex survey. Ethiopia is below the 35-country average on account ownership, and near the bottom on almost every measure of digital use. Ethiopia's figures cover the areas surveyed, which excluded Amhara, Tigray, Somali and Harari (about 30% of the population).</p>
   <div class="meta"><span>Analysis and design: Dawit Sileshi</span><span>Data: Global Findex 2025 microdata (fielded 2024) · about 1,000 adults per country, weighted</span></div>
 </header>
 
+<div class="qad" role="group" aria-label="Question, audience and decision"><div><b>Question</b>Where does Ethiopia stand on access to and use of digital finance, compared with other African countries?</div><div><b>Audience</b>Analysts and partners who need a quick comparison before a deeper study.</div><div><b>Decision it informs</b>Which gap to investigate first: getting people accounts, or getting account holders to use them.</div></div>
+<details class="facts" open><summary>Data facts: source, coverage and checks</summary><dl><dt>Source</dt><dd>World Bank Global Findex 2025, individual microdata (CSV release)</dd><dt>Fieldwork</dt><dd>2024; dates vary by country</dd><dt>Population</dt><dd>Adults 15+ in 35 Sub-Saharan countries surveyed. Some samples exclude areas; Ethiopia's excludes Amhara, Tigray, Somali and Harari.</dd><dt>Sample</dt><dd>About 1,000 adults per country, 35,093 in total</dd><dt>Denominators</dt><dd>Set per indicator; see the indicator dictionary below. "Account but no digital payment" uses account holders only.</dd><dt>Missing data</dt><dd>"Don't know" and "refused" answers excluded from the base of phone and smartphone indicators. Mauritania was not asked about mobile money and is left out of that indicator.</dd><dt>Checks</dt><dd>Ethiopia matches all three published values (accounts 48.8%, mobile money 9.5%, digital payments 20.7%). The same code produces every country.</dd><dt>Why interactive</dt><dd>One survey round, so this is for comparing countries, not tracking change. Every view also exists as a table.</dd></dl></details>
 <section class="hero" aria-label="Headline figures">
-  <div class="stat eth"><b class="num" id="h1">58%</b><span>of Ethiopian account holders made or received no digital payment in a year. Highest of 35 countries.</span></div>
-  <div class="stat"><b class="num" id="h2">13%</b><span>is the same figure for Sub-Saharan Africa as a whole, weighted by adult population.</span></div>
-  <div class="stat"><b class="num" id="h3">9.5%</b><span>of Ethiopian adults have a mobile money account. Only Niger is lower among the 34 countries asked.</span></div>
+  <div class="stat eth"><b class="num" id="h1">58%</b><span>of account holders in Ethiopia's sample made or received no digital payment in a year. The highest point estimate of 35 countries.</span></div>
+  <div class="stat"><b class="num" id="h2">13%</b><span>is the same figure across the 35 countries surveyed, weighted by each country's adult population.</span></div>
+  <div class="stat"><b class="num" id="h3">9.5%</b><span>of adults in Ethiopia's sample have a mobile money account. Only Niger's point estimate is lower among the 34 countries asked.</span></div>
 </section>
 
 <section aria-labelledby="sc-h">
   <h2 id="sc-h">Ethiopia scorecard</h2>
-  <p class="sub">Ethiopia against the regional figure. Rank is out of the countries measured, 1 = best.</p>
-  <div class="legend"><span><i class="key-dot"></i>Ethiopia</span><span><i class="key-reg"></i>Sub-Saharan Africa</span></div>
+  <p class="sub">Ethiopia against the 35-country average. Rank orders point estimates, 1 = best; countries a few points apart may not truly differ.</p>
+  <div class="legend"><span><i class="key-dot"></i>Ethiopia</span><span><i class="key-reg"></i>35-country average</span></div>
   <div class="score" id="score" role="table" aria-label="Ethiopia scorecard"></div>
 </section>
 
 <section class="pb" aria-labelledby="rk-h">
   <h2 id="rk-h">Compare all 35 countries</h2>
-  <p class="sub">Pick an indicator. Hover a bar for the value and its 95% margin. The dashed line is the regional figure.</p>
+  <p class="sub">Pick an indicator. Hover a bar for the value and its 95% margin. The dashed line is the 35-country average.</p>
   <div class="controls">
     <div class="field"><label for="ind">Indicator</label><select id="ind"></select></div>
     <div class="field"><label for="cmp">Compare with</label><select id="cmp"></select></div>
@@ -154,7 +166,7 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);paddin
       <div class="seg" role="group" aria-label="View"><button type="button" id="vChart" aria-pressed="true">Chart</button><button type="button" id="vTable" aria-pressed="false">Table</button></div>
     </div>
   </div>
-  <div class="legend"><span><i class="key-dot" style="border-radius:2px"></i>Ethiopia</span><span><i class="key-cmp"></i><span id="cmpName">Kenya</span></span><span><i class="key-bar"></i>Other countries</span><span><i class="key-reg"></i>Sub-Saharan Africa</span></div>
+  <div class="legend"><span><i class="key-dot" style="border-radius:2px"></i>Ethiopia</span><span><i class="key-cmp"></i><span id="cmpName">Kenya</span></span><span><i class="key-bar"></i>Other countries</span><span><i class="key-reg"></i>35-country average</span></div>
   <p class="note" id="indNote"></p>
   <div id="chartView"><div class="chart" id="chart" style="margin-top:26px"></div><div class="axis"><span></span><div class="ticks" id="ticks"></div><span></span></div></div>
   <div class="tbl" id="tableView" hidden></div>
@@ -170,9 +182,9 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);paddin
   <h2 id="m-h">Method and limits</h2>
   <div class="method" style="margin-top:10px">
     <p><b>Validation.</b> Ethiopia's figures match the published Findex 2025 values: account ownership 48.8%, mobile money 9.5%, digital payments 20.7%. The same code produces every country.</p>
-    <p><b>Country figures</b> use each country's survey weight. <b>The regional figure</b> rescales each country's weights to its adult population, so large countries count more, as they should for a "share of African adults" figure.</p>
+    <p><b>Country figures</b> use each country's survey weight. <b>The 35-country average</b> rescales each country's weights to its adult population, so large countries count more. It covers only the 35 Sub-Saharan countries in the survey, not the whole region.</p>
     <p><b>Margins</b> are approximate 95% intervals from the effective sample size of the weights. Clustering isn't in the public file, so true margins are wider. Countries a few points apart are often not different.</p>
-    <p><b>Limits.</b> One survey round, about 1,000 adults per country. Mauritania was not asked about mobile money. These are shares of adults, not counts of accounts; Ethiopia's 135 million-plus wallets are accounts, many of them unused or held by the same person.</p>
+    <p><b>Limits.</b> One survey round, about 1,000 adults per country, so the picker is for exploring the 35 countries, not for tracking change over time. Some country samples exclude areas; Ethiopia's excludes Amhara, Tigray, Somali and Harari (about 30% of the population). Mauritania was not asked about mobile money. These are shares of adults, not counts of accounts; Ethiopia's 135 million-plus wallets are accounts, many of them unused or held by the same person.</p>
   </div>
 </section>
 
@@ -192,7 +204,7 @@ function ranked(k){const better=DEF[k][4];return R.filter(r=>r[k]!=null).sort((a
 function rankOf(k,name){const l=ranked(k);return [l.findIndex(r=>r.economy===name)+1,l.length];}
 
 /* scorecard */
-let h='<div class="srow head" role="row"><span>Indicator</span><span class="v" style="text-align:right">Ethiopia</span><span class="r" style="text-align:right">Region</span><span class="rank hs" style="text-align:right">Rank</span><span class="hs">0 – 100%</span></div>';
+let h='<div class="srow head" role="row"><span>Indicator</span><span class="v" style="text-align:right">Ethiopia</span><span class="r" style="text-align:right">35-country avg</span><span class="rank hs" style="text-align:right">Rank</span><span class="hs">0 – 100%</span></div>';
 ORDER.forEach(k=>{
   const [rk,n]=rankOf(k,'Ethiopia');const bottom=rk>n*0.75;
   h+=`<div class="srow" role="row"><span class="lab">${DEF[k][0]}<small>${DEF[k][4]==='lower'?'Lower is better':'Higher is better'}</small></span>
@@ -224,7 +236,7 @@ function render(){
   const k=state.ind;ind.value=k;cmp.value=state.cmp;$('cmpName').textContent=state.cmp;
   const d=DEF[k];
   const [rk,n]=rankOf(k,'Ethiopia');const c=R.find(r=>r.economy===state.cmp);
-  $('indNote').innerHTML=`<b>${d[0]}.</b> ${d[1]} Ethiopia: <b>${fmt1(eth[k])}</b>, rank ${rk} of ${n}. ${state.cmp}: ${fmt1(c[k])}. Region: ${fmt1(REG[k])}.`;
+  $('indNote').innerHTML=`<b>${d[0]}.</b> ${d[1]} Ethiopia: <b>${fmt1(eth[k])}</b>, rank ${rk} of ${n} by point estimate. ${state.cmp}: ${fmt1(c[k])}. 35-country average: ${fmt1(REG[k])}.`;
   const list=R.filter(r=>r[k]!=null).sort((a,b)=>b[k]-a[k]);
   const max=Math.max(...list.map(r=>r[k]+(r[k+'_moe']||0)),REG[k]);
   const top=max>80?100:Math.ceil(max/20)*20;
@@ -242,7 +254,7 @@ function render(){
     const cr=ch.getBoundingClientRect(),tr=first.getBoundingClientRect();
     const x=tr.left-cr.left+tr.width*pct(REG[k])/100;
     const ln=document.createElement('div');ln.className='regline';ln.style.left=x+'px';
-    ln.innerHTML=`<span class="reglab">Region ${fmt(REG[k])}</span>`;ch.appendChild(ln);
+    ln.innerHTML=`<span class="reglab">35-country avg ${fmt(REG[k])}</span>`;ch.appendChild(ln);
   }
   ch.querySelectorAll('.brow').forEach(el=>{const r=list[+el.dataset.i];
     el.addEventListener('mouseenter',e=>showTip(e,r,k));el.addEventListener('mousemove',moveTip);el.addEventListener('mouseleave',hideTip);});
@@ -250,7 +262,7 @@ function render(){
   // table
   let tb=`<table><thead><tr><th>#</th><th>Country</th><th style="text-align:right">${d[0]}</th><th style="text-align:right">± 95%</th><th style="text-align:right">Respondents</th></tr></thead><tbody>`;
   ranked(k).forEach((r,i)=>{tb+=`<tr class="${r.economy==='Ethiopia'?'eth':''}"><td class="n">${i+1}</td><td>${r.economy}</td><td class="n">${fmt1(r[k])}</td><td class="n">${r[k+'_moe']}</td><td class="n">${r.n.toLocaleString()}</td></tr>`;});
-  tb+=`<tr><td></td><td><b>Sub-Saharan Africa</b></td><td class="n"><b>${fmt1(REG[k])}</b></td><td></td><td></td></tr></tbody></table>`;
+  tb+=`<tr><td></td><td><b>35-country average</b></td><td class="n"><b>${fmt1(REG[k])}</b></td><td></td><td></td></tr></tbody></table>`;
   $('tableView').innerHTML=tb;
   $('chartView').hidden=state.view!=='chart';$('tableView').hidden=state.view!=='table';
   $('vChart').setAttribute('aria-pressed',state.view==='chart');$('vTable').setAttribute('aria-pressed',state.view==='table');
