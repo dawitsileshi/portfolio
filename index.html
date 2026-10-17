@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://dawitsileshi.netlify.app/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Dawit Sileshi, Addis Ababa">
+<meta property="og:image:alt" content="Dawit Sileshi, data analysis and visual design, Addis Ababa. A 100-square waffle chart with 20 squares highlighted in blue.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dawit Sileshi — Data analysis and visual design">
 <meta name="twitter:description" content="Survey analysis, charts, briefs and dashboards on Ethiopia's digital economy, and the software that collects the data.">
@@ -191,13 +191,29 @@
           </div>
         </article>
 
+        <article class="study study-wide study-print">
+          <a class="study-chart print-panel" href="data/phones-print/" aria-label="Open the A4 print brief">
+            <img src="data/phones-print/a4-thumb.png" width="640" height="905" loading="lazy" alt="">
+          </a>
+          <div class="print-text">
+            <h3><a href="data/phones-print/">Phones Without Accounts: A4 print brief</a></h3>
+            <p class="study-kind">One printed page for meetings: A4, CMYK, 3 mm bleed</p>
+            <p class="study-finding">The same findings and caveats as the web brief, set for paper.</p>
+            <p class="study-part"><strong>My part:</strong> set up the print document in Illustrator and produced the page with an AI-assisted script from a detailed layout spec, so every chart mark is placed from the verified figures.</p>
+            <p class="study-links">
+              <a href="data/phones-print/">See the page</a>
+              <a href="data/phones-print/phones-without-accounts-a4.pdf">Print PDF</a>
+            </p>
+          </div>
+        </article>
+
       </div>
 
       <div class="checks">
         <div class="checks-how">
           <h3>How this work was made</h3>
           <p>I loaded the survey data into PostgreSQL and checked the weighting against published figures before any analysis. Ethiopia's weighted figures match the World Bank's published values (48.8% account ownership, 9.5% mobile money, 20.7% digital payments).</p>
-          <p>I worked with an AI assistant (Claude) on the analysis plan, queries, chart code and copy, and reran every figure in SQL myself. One example of a check: my effective-sample-size calculation gives a design effect of 1.69 for Ethiopia, which matches the World Bank's published figure, so the uncertainty ranges rest on the right sample size.</p>
+          <p>I use AI tools for the analysis plan, query drafts, chart code and copy, and rerun every figure in SQL myself. One example of a check: my effective-sample-size calculation gives a design effect of 1.69 for Ethiopia, which matches the World Bank's published figure, so the uncertainty ranges rest on the right sample size.</p>
         </div>
         <div class="checks-log">
           <h3>Review log</h3>
@@ -208,7 +224,7 @@
             </li>
             <li>
               <p class="log-meta"><time datetime="2026-10-15">15 Oct 2026</time>, independent AI review</p>
-              <p>A separate Claude agent, given only the raw World Bank file and my claims (not my code), reproduced all eight key figures within 0.5 points, including the 1.69 design effect. It flagged "barely changes with income" as overclaimed, since each income group has wide intervals. Changed: the brief now says income shows no clear pattern and that a gap can't be ruled out, and the basic-phone figure (84%) is compared with phone owners who have an account (65%). <a href="data/phones-without-accounts/review.pdf">Read the full review</a></p>
+              <p>An independent AI reviewer, given only the raw World Bank file and my claims (not my code), reproduced all eight key figures within 0.5 points, including the 1.69 design effect. It flagged "barely changes with income" as overclaimed, since each income group has wide intervals. Changed: the brief now says income shows no clear pattern and that a gap can't be ruled out, and the basic-phone figure (84%) is compared with phone owners who have an account (65%). <a href="data/phones-without-accounts/review.pdf">Read the full review</a></p>
             </li>
             <!-- Add an entry here for each further check, only after it has happened:
             <li>
@@ -323,7 +339,7 @@
           </div>
         </div>
 
-        <p class="ai-note"><strong>How I use AI.</strong> I use Claude and ChatGPT every day for query drafts, chart code and copy. I recompute every figure in SQL and check it against a published value before it goes into a chart, and I publish the SQL with each project so anyone can check it.</p>
+        <p class="ai-note"><strong>How I use AI.</strong> I use AI tools every day for query drafts, chart code and copy. I recompute every figure in SQL and check it against a published value before it goes into a chart, and I publish the SQL with each project so anyone can check it.</p>
       </div>
     </div>
     </div>

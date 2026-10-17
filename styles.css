@@ -668,6 +668,33 @@ a:hover { text-decoration-thickness: 2px; }
   .wide-text .study-finding { margin-top: 1.6rem; }
 }
 
+/* ---------- print card: the A4 page beside its description ---------- */
+
+.print-panel {
+  align-items: center;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+.print-panel img {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 10px 26px rgba(0,0,0,.14);
+}
+.print-text h3 { margin-top: 1.6rem; }
+
+@media (min-width: 52em) {
+  .studies > .study-print {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    column-gap: clamp(1.75rem, 3.5vw, 3rem);
+    align-items: center;
+  }
+  .print-text h3 { margin-top: 0; }
+}
+
 /* ---------- how the data work was made + review log ----------
    Closes the data section. Same five/six split as the section heads, so the
    method sits under the heading and the log under the lede. */

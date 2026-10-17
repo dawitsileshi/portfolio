@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phones Without Accounts: A4 print brief · Dawit Sileshi</title>
+<meta name="description" content="The Phones Without Accounts brief set as a print-ready A4 page: CMYK, 3 mm bleed, editable in Illustrator.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@500&text=%E1%8B%B3%E1%8B%8A%E1%89%B5%E1%88%B5%E1%88%88%E1%88%BA&display=swap">
+<link rel="stylesheet" href="/styles.css">
+<script>
+(function () {
+  var t = "light";
+  try {
+    t = localStorage.getItem("theme")
+      || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  } catch (e) {}
+  document.documentElement.setAttribute("data-theme", t);
+  document.documentElement.className = "js";
+})();
+</script>
+<style>
+/* Page-specific layout. Tokens, header, buttons and type come from /styles.css. */
+.page-intro { padding-top: clamp(2rem, 5vw, 3.5rem); }
+.back { font-size: 0.9375rem; color: var(--ink-2); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.page-intro h1 {
+  margin-top: 1.25rem;
+  font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+}
+.lede { margin: 1.25rem 0 0; max-width: 38em; font-size: 1.1875rem; line-height: 1.55; color: var(--ink-2); }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem 2rem;
+  margin: 2rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.facts dt { font-size: 0.8125rem; color: var(--ink-3); }
+.facts dd { margin: 0.2rem 0 0; font-size: 0.9688rem; line-height: 1.5; }
+
+/* the page itself, shown like a sheet of paper */
+.sheet-wrap {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-radius: 18px;
+  background: var(--paper-2);
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+.sheet-wrap a.sheet { display: block; width: 100%; max-width: 620px; border: 0; }
+.sheet-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 12px 32px rgba(0,0,0,.14);
+}
+.sheet-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+
+/* process */
+.process { margin-top: clamp(3.5rem, 8vw, 5.5rem); display: grid; gap: 2rem; }
+.process h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); line-height: 1.08; letter-spacing: -0.025em; }
+.process-text p { margin: 0 0 1.1rem; max-width: 36em; color: var(--ink-2); }
+.process-text p strong { color: var(--ink); font-weight: 600; }
+.spec { margin: 0; align-self: start; background: var(--paper-2); border-radius: 14px; padding: 1.25rem 1.4rem; }
+.spec h3 { font-size: 1rem; margin-bottom: 0.6rem; }
+.spec dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.45rem 1rem; font-size: 0.9375rem; }
+.spec dt { color: var(--ink-3); }
+.spec dd { margin: 0; }
+@media (min-width: 64em) {
+  .process { grid-template-columns: minmax(0, 6.2fr) minmax(0, 5fr); column-gap: var(--split-gap); }
+  .process h2 { grid-column: 1 / -1; }
+}
+.page-end { margin-top: clamp(3rem, 7vw, 5rem); padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="shell site-head">
+    <a class="brand" href="/">Dawit Sileshi <span class="brand-am" lang="am">ዳዊት ስለሺ</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="/#data" aria-current="true">Data work</a>
+      <a href="/#software">Software</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
+  </div>
+</header>
+
+<main id="main" class="shell">
+
+  <section class="page-intro" aria-labelledby="title">
+    <a class="back" href="/#data">← All work</a>
+    <h1 id="title">Phones Without Accounts: A4 print brief</h1>
+    <p class="lede">The brief on one printed page, for a meeting or a partner roundtable: the same findings and caveats as the web version, set for paper.</p>
+    <dl class="facts">
+      <div><dt>Format</dt><dd>A4, CMYK, 3 mm bleed, print-ready PDF</dd></div>
+      <div><dt>Built with</dt><dd>Adobe Illustrator and an AI-assisted script</dd></div>
+      <div><dt>Data</dt><dd>World Bank Global Findex 2025 microdata, surveyed areas only. <a href="/data/phones-without-accounts/">Read the web brief</a></dd></div>
+    </dl>
+  </section>
+
+  <section class="sheet-wrap" aria-label="The page">
+    <a class="sheet" href="phones-without-accounts-a4.pdf">
+      <img src="a4.png" width="1239" height="1753" alt="The A4 brief. Headline: one in five adults in Ethiopia's Findex survey carries a phone but has no account. A 100-square waffle (38, 20, 11, 31), stats of 84% and 13%, a dot plot of the no-account rate by schooling, place, age and income with 95% intervals, ranked reasons led by not enough money at 82%, three things to test next, and a sources and caveats box.">
+    </a>
+    <p class="sheet-actions">
+      <a class="btn btn-primary" href="phones-without-accounts-a4.pdf">Download the print PDF</a>
+      <a class="btn btn-quiet" href="/data/phones-without-accounts/">Read the web brief</a>
+    </p>
+  </section>
+
+  <section class="process" aria-labelledby="process-h">
+    <h2 id="process-h">How it was made</h2>
+    <div class="process-text">
+      <p><strong>Why print.</strong> Partners and regulators still take printed briefs into meetings, and a web page doesn't print well. So I set the same content on one A4 page, with the coverage note and caveats kept on the page.</p>
+      <p><strong>How I built it.</strong> I set up the print document in Illustrator (A4, 3 mm bleed, CMYK swatches, Inter type styles) and produced the page with an AI-assisted script from a detailed layout spec. The script places every bar, dot and interval directly from the verified figures, so no data mark is drawn by eye, and the file opens and edits in Illustrator.</p>
+      <p><strong>Checked before publishing.</strong> CMYK only, no transparency, fonts embedded, trim and bleed boxes set, and every figure matches the brief.</p>
+      <p><strong>What I learned.</strong> Text lines up in print when it's placed by its baseline, not its text box. And chart marks should come from the data, never from the eye: in practice that means drawing them with a chart tool or from a spreadsheet of sizes, then designing around them.</p>
+    </div>
+    <aside class="spec" aria-label="Print specification">
+      <h3>Print specification</h3>
+      <dl>
+        <dt>Trim</dt><dd>210 × 297 mm (A4)</dd>
+        <dt>Bleed</dt><dd>3 mm on all sides</dd>
+        <dt>Colour</dt><dd>CMYK; small text in 100% black only</dd>
+        <dt>Highlight</dt><dd>C 90 · M 70 · Y 0 · K 0</dd>
+        <dt>Type</dt><dd>Inter, 6.5 to 21 pt</dd>
+        <dt>Safe area</dt><dd>All text at least 10 mm inside the trim</dd>
+      </dl>
+    </aside>
+  </section>
+
+  <p class="page-end"><a class="back" href="/#data">← Back to all work</a></p>
+</main>
+
+<footer class="shell site-foot">
+  <p>Dawit Sileshi, Addis Ababa</p>
+  <p><a href="#top">Back to top</a></p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement, btn = document.getElementById("theme-toggle");
+  var meta = document.querySelector('meta[name="theme-color"]');
+  function paint(t) {
+    root.setAttribute("data-theme", t);
+    btn.textContent = t === "dark" ? "Light mode" : "Dark mode";
+    btn.setAttribute("aria-label", "Switch to " + (t === "dark" ? "light" : "dark") + " theme");
+    if (meta) meta.setAttribute("content", t === "dark" ? "#10141c" : "#ffffff");
+  }
+  paint(root.getAttribute("data-theme") || "light");
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    paint(next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+  var header = document.querySelector(".site-header");
+  function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 8); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
